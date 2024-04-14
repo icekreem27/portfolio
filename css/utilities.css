@@ -46,6 +46,11 @@ a.icon-link:hover {
   text-decoration: underline;
 }
 
+.navbar-buttons {
+  display: flex;
+  gap: 15px;
+}
+
 #links {
   display: flex;
   justify-content: left;
