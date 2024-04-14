@@ -46,6 +46,13 @@ a.icon-link:hover {
   text-decoration: underline;
 }
 
+#links {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  gap: 16px;
+}
+
 /* Small devices (portrait tablets and large phones, 800px and below) */
 @media only screen and (max-width: 800px) {
   .navbar {
