@@ -13,19 +13,6 @@
   <link rel="stylesheet" href="../css/utilities.css">
 
   <script defer src="../js/script.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      fetch('../assets/files/COMP3611_Assessment.md')
-        .then(response => response.text())
-        .then(text => {
-          document.getElementById('project').innerHTML = marked(text);
-        })
-        .catch(error => console.error('Error loading the Markdown file:', error));
-    });
-    </script>
-    
-
 </head>
 
 <body>
@@ -37,7 +24,7 @@
 
     <!-- Buttons Container -->
     <div class="navbar-buttons">
-      <a class="button" href="assets/files/Karim Abbas CV.pdf" target="_blank">
+      <a class="button" href="../assets/files/Karim Abbas CV.pdf" target="_blank">
         <span class="button-text">CV</span>
       </a>
       <a class="button" href="mailto:icekreem27@gmail.com">
