@@ -1,138 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-     <link rel="icon" href="../assets/images/av.png" />
-     <title>Karim's Portfolio</title>
-    <meta name="description" content="A portfolio for all my projects.">
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-		<link rel="stylesheet" href="../css/layout.css">
-    <link rel="stylesheet" href="../css/typography.css">
-    <link rel="stylesheet" href="../css/utilities.css">
+<head>
+  <meta charset="utf-8">
+  <link rel="icon" href="../assets/images/av.png" />
+  <title>Karim's Portfolio</title>
+  <meta name="description" content="A portfolio for all my projects.">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-		<script defer src="../js/script.js"></script>
-	</head>
-	<body>
-    <!-- NAVBAR -->
-    <div class="navbar">
-      <a class="nav-title-link" href="./index.html">
-        <span class="nav-title">Karim's Portfolio</span>
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/typography.css">
+  <link rel="stylesheet" href="../css/utilities.css">
+
+  <script defer src="../js/script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      fetch('../assets/files/COMP3611_Assessment.md')
+        .then(response => response.text())
+        .then(text => {
+          document.getElementById('project').innerHTML = marked(text);
+        })
+        .catch(error => console.error('Error loading the Markdown file:', error));
+    });
+    </script>
+    
+
+</head>
+
+<body>
+  <!-- NAVBAR -->
+  <div class="navbar">
+    <a class="nav-title-link" href="../index.html">
+      <span class="nav-title">Karim's Portfolio</span>
+    </a>
+
+    <!-- Buttons Container -->
+    <div class="navbar-buttons">
+      <a class="button" href="assets/files/Karim Abbas CV.pdf" target="_blank">
+        <span class="button-text">CV</span>
       </a>
-      
-      <!-- Buttons Container -->
-      <div class="navbar-buttons">
-        <a class="button" href="assets/files/Karim Abbas CV.pdf" target="_blank">
-          <span class="button-text">CV</span>
-        </a>
-        <a class="button" href="mailto:icekreem27@gmail.com">
-          <span class="button-text">Contact Me</span>
-        </a>
-      </div>
+      <a class="button" href="mailto:icekreem27@gmail.com">
+        <span class="button-text">Contact Me</span>
+      </a>
     </div>
+  </div>
 
-    <!-- MAIN PAGE CONTENT -->
-    <div id="main-content">
+  <!-- MAIN PAGE CONTENT -->
+  <div id="main-content">
 
-      <!-- PROJECT HEADER -->
-      <div id="project-header">
-          <!-- 
+    <!-- PROJECT HEADER -->
+    <div id="project-header">
+      <!-- 
             TODO
 
             - Change the 'main-title' text to the name of your project
             - Change the 'body-text' text to a short and sweet description of your project (maybe the same as the one on the project card)
             - Change "desktop.jpeg" to the image filename you uploaded in the assets/images folder.
           -->
-        <div class="main-title">Project Name</div>
-        <div class="body-text">A small description about the project goes here, get the reader hooked on the project and tell them why they should continue to read this page. Give it a sweet tagline.</div>
-        <image class="project-header-image" src="../assets/images/desktop.jpeg">
-      </div>
+      <div class="main-title">Predicting Cancer Mortality Rates in US Counties</div>
+      <div class="body-text">Final coursework for Machine Learning</div>
+    </div>
 
-      <!-- PROJECT DETAILS -->
-      <!-- 
+    <!-- PROJECT DETAILS -->
+    <!-- 
         TODO
 
         - Change the 'subheader-text' to whatever header you want for project details
         - Add paragraphs using the <div class="body-text"></div> elements in the "project-details-content"
       -->
-      <div id="project-details">
-        <div class="subheader-text">Project Details / Background</div>
-        <div class="project-details-content">
-          <div class="body-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tristique risus nec feugiat in fermentum. Sed id semper risus in hendrerit gravida. Placerat duis ultricies lacus sed. Id neque aliquam vestibulum morbi blandit cursus risus. Elit pellentesque habitant morbi tristique senectus et netus et. Elementum tempus egestas sed sed risus pretium quam. Nibh ipsum consequat nisl vel pretium lectus quam id leo. Vitae congue mauris rhoncus aenean vel elit.</div>
-          <div class="body-text">Vitae justo eget magna fermentum. Imperdiet nulla malesuada pellentesque elit eget gravida. Aliquet nec ullamcorper sit amet. Aliquet sagittis id consectetur purus. Ac tortor dignissim convallis aenean. Enim neque volutpat ac tincidunt vitae. Lobortis feugiat vivamus at augue. Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper. Viverra orci sagittis eu volutpat. Massa tincidunt nunc pulvinar sapien et ligula. Donec enim diam vulputate ut.</div>
-        </div>
-      </div>
-
-      <!-- IMAGE GALLERY -->
-      <div id="project-gallery">
-        <!-- TODO - Change the 'subheader-text' to whatever you want the Gallery section header to say -->
-        <div class="subheader-text">Image Gallery</div>
-        <div class="project-gallery-content">
-            <!-- 
-              TODO
-
-              This is where the images in the gallery live. Here's a simple gallery image for you to copy:
-
-              Full Width Image:
-
-                <div class="gallery-image-container">
-                  <img src="../assets/images/IMAGE_NAME" class="gallery-image">
-                  <span class="image-caption">IMAGE_CAPTION</span>
-                </div>
-
-              Half Width Image: 
-
-                <div class="gallery-image-container half-width">
-                  <img src="../assets/images/IMAGE_NAME" class="gallery-image">
-                  <span class="image-caption">IMAGE_CAPTION</span>
-                </div>
-
-              - To add an image to the this area, copy one of the above, paste it below this comment, and change the following:
-                  - IMAGE_NAME: the name of the image file in assets/images
-                  - IMAGE_CAPTION: to the caption of the image
-            -->
-            <div class="gallery-image-container half-width">
-              <img src="../assets/images/code.jpeg" class="gallery-image">
-              <span class="image-caption">Give your image a caption. People love context.</span>
-            </div>
-            <div class="gallery-image-container half-width">
-              <img src="../assets/images/sketchbook.jpeg" class="gallery-image">
-              <span class="image-caption">Give your image a caption. People love context.</span>
-            </div>
-            <div class="gallery-image-container">
-              <img src="../assets/images/camera.jpeg" class="gallery-image">
-              <span class="image-caption">Give your image a caption. People love context.</span>
-            </div>
-        </div>
+    <div id="project-details">
+      <div class="subheader-text">Project Details / Background</div>
+      <div class="project-details-content">
+        <div class="body-text">This project involves developing a regression model to predict cancer mortality rates in
+          various US counties using a dataset of socio-economic characteristics and other relevant information from
+          multiple counties. The dataset includes training data and target variables housed in separate CSV files
+          ('Training_data.csv' and 'Training_data_targets.csv'). The objective is to apply this model to predict rates
+          for 'unseen' counties, utilizing Jupyter notebooks from the module's lab sessions to guide the analysis and
+          document the methodology and findings.</div>
       </div>
     </div>
 
-    <!-- FOOTER -->
-    <div id="footer">
-      <!-- Twitter -->
-      <!-- <a class="icon-link" target="_blank" href="https://twitter.com/icekreem27">
-        <image src="./assets/icons/instagram.svg" class="footer-icon"/>
-      </a> -->
-
-      <!-- Github -->
-      <a class="icon-link" href="https://github.com/icekreem27" target="_blank">
-        <image src="../assets/icons/github.svg" class="footer-icon"/>
-      </a>
-
-      <!-- LinkedIn -->
-      <a class="icon-link" target="_blank" href="https://www.linkedin.com/in/karimabbas27/" target="_blank">
-        <image src="../assets/icons/linkedin.svg" class="footer-icon"/>
-      </a>
+    <!-- PROJECT -->
+    <div id="project">
       
-      <!-- insta -->
-      <a class="icon-link" target="_blank" href="https://instagram.com/icekreem27" target="_blank">
-        <image src="../assets/icons/instagram.svg" class="footer-icon"/>
-      </a>
-      
-      <!-- Email -->
-      <a class="icon-link" href="mailto:icekreem27@gmail.com" target="_blank">
-        <image src="../assets/icons/mail.svg" class="footer-icon"/>
-      </a>
     </div>
-	</body>
+  </div>
+
+  <!-- </div>FOOTER -->
+  <div id="footer">
+    <!-- Github -->
+    <a class="icon-link" href="https://github.com/icekreem27" target="_blank">
+      <image src="../assets/icons/github.svg" class="footer-icon" />
+    </a>
+
+    <!-- LinkedIn -->
+    <a class="icon-link" target="_blank" href="https://www.linkedin.com/in/karimabbas27/" target="_blank">
+      <image src="../assets/icons/linkedin.svg" class="footer-icon" />
+    </a>
+
+    <!-- insta -->
+    <a class="icon-link" target="_blank" href="https://instagram.com/icekreem27" target="_blank">
+      <image src="../assets/icons/instagram.svg" class="footer-icon" />
+    </a>
+
+    <!-- Email -->
+    <a class="icon-link" href="mailto:icekreem27@gmail.com" target="_blank">
+      <image src="../assets/icons/mail.svg" class="footer-icon" />
+    </a>
+  </div>
+</body>
+
 </html>
