@@ -47,3 +47,18 @@ body {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
 }
+
+.code {
+  font-family: 'Consolas', 'Courier New', monospace; /* Monospaced font for better readability */
+  font-size: 16px; /* Increased font size for better visibility */
+  text-align: left; /* Ensures text within the code block is left-aligned */
+  background-color: #f4f4f4; /* Light grey background */
+  border-left: 3px solid #000000; /* Black left border for emphasis */
+  overflow: auto; /* Adds horizontal scrolling if code is too long */
+  white-space: pre; /* Maintains spacing and line breaks as in the source */
+  line-height: 1.5; /* Line spacing */
+  padding: 10px; /* Padding around the text for better presentation */
+  padding-left: 5px; /* Reduced left padding */
+  margin: 10px 0; /* Vertical spacing before and after the code block */
+}
+
