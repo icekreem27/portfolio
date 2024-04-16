@@ -79,6 +79,7 @@ a.button {
   display: flex;
   gap: 5px;
   align-items: center;
+  white-space: nowrap;
 }
 
 a.button:hover {
