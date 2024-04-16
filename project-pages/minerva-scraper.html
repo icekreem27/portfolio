@@ -1,95 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-     <link rel="icon" href="../assets/images/av.png" />
-     <title>Karim's Portfolio</title>
+<head>
+    <meta charset="utf-8">
+    <link rel="icon" href="../assets/images/av.png" />
+    <title>Karim's Portfolio</title>
     <meta name="description" content="A portfolio for all my projects.">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-		<link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/layout.css">
     <link rel="stylesheet" href="../css/typography.css">
     <link rel="stylesheet" href="../css/utilities.css">
 
-		<script defer src="../js/script.js"></script>
-	</head>
-	<body>
-    <!-- NAVBAR -->
-    <div class="navbar">
-      <a class="nav-title-link" href="../index.html">
+    <script defer src="../js/script.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/highlight.min.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', (event) => { hljs.highlightAll(); });</script>
+</head>
+<body>
+<!-- NAVBAR -->
+<div class="navbar">
+    <a class="nav-title-link" href="../index.html">
         <span class="nav-title">Karim's Portfolio</span>
-      </a>
-      
-      <!-- Buttons Container -->
-      <div class="navbar-buttons">
+    </a>
+    
+    <!-- Buttons Container -->
+    <div class="navbar-buttons">
         <a class="button" href="../assets/files/Karim Abbas CV.pdf" target="_blank">
-          <span class="button-text">CV</span>
+            <span class="button-text">CV</span>
         </a>
         <a class="button" href="mailto:icekreem27@gmail.com">
-          <span class="button-text">Contact Me</span>
+            <span class="button-text">Contact Me</span>
         </a>
-      </div>
     </div>
+</div>
 
-    <!-- MAIN PAGE CONTENT -->
-    <div id="main-content">
+<!-- MAIN PAGE CONTENT -->
+<div id="main-content">
 
-      <!-- PROJECT HEADER -->
-      <div id="project-header">
+    <!-- PROJECT HEADER -->
+    <div id="project-header">
         <div class="main-title">Web Scraping with Python and Selenium</div>
         <div class="body-text">This project post explores a web scraper built using Python and Selenium as part of my third year individual project. It was build as part of the data collection process and automates the download of lecture resources from Minerva Blackboard.</div>
     </div>
 
-      <!-- PROJECT DETAILS -->
-      <div id="project-details">
+    <!-- PROJECT DETAILS -->
+    <div id="project-details">
         <div class="subheader-text">Project Details</div>
         <div class="project-details-content">
             <div class="body-text">
                 <strong>Libraries and Setup:</strong>
                 <br>
                 This project leverages multiple libraries for its operations. It uses <code>os</code> and <code>json</code> for handling system operations and JSON data respectively, <code>requests</code> for HTTP requests, and <code>selenium</code> for browser automation. The Selenium WebDriver setup is automated to always use the latest version of ChromeDriver, ensuring up-to-date browser interactions:
-                <pre><div class="code">
-        from selenium import webdriver
-        from webdriver_manager.chrome import ChromeDriverManager
-        service = Service(ChromeDriverManager().install())
-        driver = webdriver.Chrome(service=service)
-                </div></pre>
+                <pre><code class="language-python">
+from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
+service = Service(ChromeDriverManager().install())
+driver = webdriver.Chrome(service=service)
+                </code></pre>
             </div>
             <div class="body-text">
                 <strong>Login Functionality:</strong>
                 <br>
                 The login function automates the login process by navigating to the specified URL, waiting for the email input field to appear, and entering user credentials:
-                <pre><div class="code">
-        driver.get('https://minerva.leeds.ac.uk/ultra/courses/') # Navigate to login page
-        wait.until(EC.visibility_of_element_located((By.ID, 'i0116'))).send_keys(email)
-                </div></pre>
+                <pre><code class="language-python">
+driver.get('https://minerva.leeds.ac.uk/ultra/courses/') # Navigate to login page
+wait.until(EC.visibility_of_element_located((By.ID, 'i0116'))).send_keys(email)
+                </code></pre>
             </div>
             <div class="body-text">
                 <strong>Identifying and Collecting Files:</strong>
                 <br>
                 The <code>getUnits</code> function navigates post-login to extract URLs for each course unit, collecting hyperlinks and their titles for later use:
-                <pre><div class="code">
-        unit_links = container.find_elements(By.TAG_NAME, 'a')
-        units_info = [{'url': link.get_attribute('href'), 'title': link.text} for link in unit_links]
-                </div></pre>
+                <pre><code class="language-python">
+unit_links = container.find_elements(By.TAG_NAME, 'a')
+units_info = [{'url': link.get_attribute('href'), 'title': link.text} for link in unit_links]
+                </code></pre>
             </div>
             <div class="body-text">
                 <strong>File Download Process:</strong>
                 <br>
                 Files are identified and downloaded based on their descriptions. The script checks if the files are lectures or transcripts before initiating downloads:
-                <pre><div class="code">
-        if 'lecture' in data_bbfile_json['linkName'].lower() or 'transcript' in data_bbfile_json['linkName'].lower():
-            download_file(download_url, download_directory, filename, session)
-                </div></pre>
+                <pre><code class="language-python">
+if 'lecture' in data_bbfile_json['linkName'].lower() or 'transcript' in data_bbfile_json['linkName'].lower():
+    download_file(download_url, download_directory, filename, session)
+                </code></pre>
             </div>
             <div class="body-text">
                 <strong>Cookie Management:</strong>
                 <br>
                 To maintain continuity between browser and server sessions, cookies are synchronized as follows:
-                <pre><div class="code">
-        for cookie in cookies:
-            session.cookies.set(cookie['name'], cookie['value'], domain=cookie['domain'])
-                </div></pre>
+                <pre><code class="language-python">
+for cookie in cookies:
+    session.cookies.set(cookie['name'], cookie['value'], domain=cookie['domain'])
+                </code></pre>
             </div>
             <div class="body-text">
                 The scraper identified files with either “lecture” or “transcript” in the title to filter out other material posted by the module leader such as further readings or videos. It retrieved and downloaded all lecture slides and transcripts as both pptx and pdf files respectively.
@@ -98,31 +101,32 @@
             <div class="gallery-image-container">
                 <img src="../assets/images/scraped files.png" class="gallery-image">
                 <span class="image-caption">screenshot of collected files</span>
-              </div>
-      </div>
+            </div>
+        </div>
     </div>
+</div>
 
-    <!-- FOOTER -->
-    <div id="footer">
-      <!-- Github -->
-      <a class="icon-link" href="https://github.com/icekreem27" target="_blank">
+<!-- FOOTER -->
+<div id="footer">
+    <!-- Github -->
+    <a class="icon-link" href="https://github.com/icekreem27" target="_blank">
         <image src="../assets/icons/github.svg" class="footer-icon"/>
-      </a>
+    </a>
 
-      <!-- LinkedIn -->
-      <a class="icon-link" target="_blank" href="https://www.linkedin.com/in/karimabbas27/" target="_blank">
+    <!-- LinkedIn -->
+    <a class="icon-link" target="_blank" href="https://www.linkedin.com/in/karimabbas27/" target="_blank">
         <image src="../assets/icons/linkedin.svg" class="footer-icon"/>
-      </a>
-      
-      <!-- insta -->
-      <a class="icon-link" target="_blank" href="https://instagram.com/icekreem27" target="_blank">
+    </a>
+    
+    <!-- insta -->
+    <a class="icon-link" target="_blank" href="https://instagram.com/icekreem27" target="_blank">
         <image src="../assets/icons/instagram.svg" class="footer-icon"/>
-      </a>
-      
-      <!-- Email -->
-      <a class="icon-link" href="mailto:icekreem27@gmail.com" target="_blank">
+    </a>
+    
+    <!-- Email -->
+    <a class="icon-link" href="mailto:icekreem27@gmail.com" target="_blank">
         <image src="../assets/icons/mail.svg" class="footer-icon"/>
-      </a>
-    </div>
-	</body>
+    </a>
+</div>
+</body>
 </html>
