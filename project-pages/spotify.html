@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+        <meta charset="utf-8">
+        <link rel="icon" href="../assets/images/av.png" />
+        <title>Karim's Portfolio</title>
+        <meta name="description" content="A portfolio for all my projects.">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <link rel="stylesheet" href="../css/layout.css">
+        <link rel="stylesheet" href="../css/typography.css">
+        <link rel="stylesheet" href="../css/utilities.css">
+
+        <script defer src="../js/script.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/styles/default.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/highlight.min.js"></script>
+        <script>document.addEventListener('DOMContentLoaded', (event) => { hljs.highlightAll(); });</script>
+	</head>
+	<body>
+    <!-- NAVBAR -->
+    <div class="navbar">
+      <a class="nav-title-link" href="../index.html">
+        <span class="nav-title">Karim's Portfolio</span>
+      </a>
+      
+      <!-- Buttons Container -->
+      <div class="navbar-buttons">
+        <a class="button" href="../assets/files/Karim Abbas CV.pdf" target="_blank">
+          <span class="button-text">CV</span>
+        </a>
+        <a class="button" href="mailto:icekreem27@gmail.com">
+          <span class="button-text">Contact Me</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- MAIN PAGE CONTENT -->
+    <div id="main-content">
+
+        <!-- PROJECT HEADER -->
+        <div id="project-header">
+            <div class="main-title">Spotify Playlist Recommendation</div>
+            <div class="body-text">With the goal of developing my data analytics skills, this project aims to create a recommendation system for Spotify playlists by analysing already existing playlists and matching them with other songs that best fit the playlist.</div>
+            <div class="body-text">Jupyter Notebook and project details can be found in <a href="https://github.com/icekreem27/spotify-playlist-recommendation" target="_blank">this</a> git repo</div>  
+        </div>
+
+      <!-- PROJECT DETAILS -->
+      <div id="project-details">
+        <div class="subheader-text">Project Details</div>
+        <div class="project-details-content">
+          <div class="body-text">
+            Having already used vector similarity techniques in my third year individual project, I decided to try to apply it here to find similarities between songs based on their audio features. I also wanted to explore large scale data manipulation to build my skills in data proccessing. Using the Spotify dataset seemed like the most ideal choice as well as the most interesting.
+            <br><br>
+            The goal was to create a system that could generate personalised song recommendations by analysing a user's existing Spotify playlists. This involved processing a substantial dataset from Spotify, consisting of numerous tracks and their respective audio features, such as tempo, energy, danceability, and more.
+          </div>
+          <div class="body-text">
+            <strong>Technologies Used:</strong>
+            <ul>
+              <li><strong>Python/Jupyter Notebook:</strong> Used for all aspects of structure and analysis throughout this project.</li>
+              <li><strong>Pandas and NumPy:</strong> For data preprocessing and all numerical operations.</li>
+              <li><strong>Scikit-learn:</strong> Used to implement machine learning algorithms and preprocessing techniques.</li>
+              <li><strong>Matplotlib and Seaborn:</strong> For data visualisation, helping to interpret the data effectively.</li>
+            </ul>
+          </div>   
+          <div class="body-text">
+                <strong>Collection and Preparation</strong>
+                <br><br>
+                I started by gathering song data from a pre-existing <a href="https://www.kaggle.com/datasets/yamaerenay/spotify-dataset-19212020-600k-tracks/data" target="_blank">dataset</a>  which included detailed features of each track such as track IDs, names, artist names, and audio features (e.g., danceability, energy, key). The preprocessing phase involved cleaning the data, handling missing values, and standardising the format of the audio features to ensure accurate comparisons.
+            </div>
+            <div class="body-text">
+                <strong>Feature Engineering</strong>
+                <br><br>
+                To understand the underlying patterns in the data, I explored various audio features and used techniques like Principal Component Analysis (PCA) to reduce dimensionality. This helped in distilling the features into a more manageable form without losing critical information, making it easier to compute similarities between tracks.
+            </div>
+            <div class="body-text">
+                <strong>Recommendation Algorithm</strong>
+                <br><br>
+                The heart of the notebook involves developing the recommendation algorithm. The method used is a form of content-based filtering, using track features to find similarities between songs in a user's existing playlist and the broader Spotify library dataset. The similarity between tracks is calculated using the cosine similarity with the song vectors.
+                <br><br>
+                The final and main function,<code class="nohighlight" style="font-size: 14px;"> generate_playlist_recos</code>, takes any given user's playlist and the complete dataset as inputs, finds song similarities, and outputs a list of recommended tracks that are not yet in the user's playlist but share similar audio characteristics.
+            </div>
+            <div class="body-text">
+                <strong>Output and Visualisation</strong>
+                <br><br>
+                The final step in the notebook includes presenting the recommended tracks. The output is formatted to show only essential details like track ID, name, artist, and a similarity score, which quantifies how closely the recommended track matches the user's musical taste. Links to track images or Spotify URLs are also provided.
+            </div>
+            <div class="body-text">
+                <strong>Reflection and Future Improvments</strong>
+                <br><br>
+                Reflecting on this project, I've greatly expanded my knowledge and practical skills in data science, particularly in applying new technologies to real-world applications. Utilising Python, Pandas, NumPy, and Scikit-learn, I've learned the intricate processes of data manipulation, feature engineering, and the basics of building machine learning models.
+                <br><br>
+                Through the development and application of a recommendation system, I've gained a deeper appreciation for the potential of machine learning to create personalised experiences in music streaming services like Spotify. The project not only allowed me to work with sophisticated algorithms but also challenged me to think critically about how to tackle unique datasets.
+                <br><br>
+                For future work, I plan to explore more integrated solutions, such as further integration with Spotify's API for automatic playlist creation and real-time music recommendation updates. I'm particularly interested in experimenting with deeper models, like convolutional neural networks or recurrent neural networks, to explore complex patterns in music that go beyond what cosine similarity can achieve. These enhancements aim to tap into richer datasets and potentially deliver even more finely tuned music recommendations.
+              </div>
+              
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div id="footer">
+      <!-- Github -->
+      <a class="icon-link" href="https://github.com/icekreem27" target="_blank">
+        <image src="../assets/icons/github.svg" class="footer-icon"/>
+      </a>
+
+      <!-- LinkedIn -->
+      <a class="icon-link" target="_blank" href="https://www.linkedin.com/in/karimabbas27/" target="_blank">
+        <image src="../assets/icons/linkedin.svg" class="footer-icon"/>
+      </a>
+      
+      <!-- insta -->
+      <a class="icon-link" target="_blank" href="https://instagram.com/icekreem27" target="_blank">
+        <image src="../assets/icons/instagram.svg" class="footer-icon"/>
+      </a>
+      
+      <!-- Email -->
+      <a class="icon-link" href="mailto:icekreem27@gmail.com" target="_blank">
+        <image src="../assets/icons/mail.svg" class="footer-icon"/>
+      </a>
+    </div>
+	</body>
+</html>
