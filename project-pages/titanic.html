@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3V3DLGWFQX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-3V3DLGWFQX');
+    </script>
+    
+		<meta charset="utf-8">
+     <link rel="icon" href="../assets/images/av.png" />
+     <title>Karim's Portfolio</title>
+    <meta name="description" content="A portfolio for all my projects.">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/typography.css">
+    <link rel="stylesheet" href="../css/utilities.css">
+
+		<script defer src="../js/script.js"></script>
+	</head>
+	<body>
+    <!-- NAVBAR -->
+    <div class="navbar">
+      <a class="nav-title-link" href="../index.html">
+        <span class="nav-title">Karim's Portfolio</span>
+      </a>
+      
+      <!-- Buttons Container -->
+      <div class="navbar-buttons">
+        <a class="button" href="../assets/files/Karim Abbas CV.pdf" target="_blank">
+          <span class="button-text">CV</span>
+        </a>
+        <a class="button" href="mailto:icekreem27@gmail.com">
+          <span class="button-text">Contact Me</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- MAIN PAGE CONTENT -->
+    <div id="main-content">
+
+      <!-- PROJECT HEADER -->
+      <div id="project-header">
+        <div class="main-title">Titanic Mortality Prediction</div>
+        <div class="body-text">Predicting the survival chances of the passengers aboard the Titanic using the Titanic passengers <a href="https://www.kaggle.com/competitions/titanic/" target="_blank">dataset</a>.</div>
+        <div class="body-text">Jupyter Notebook and project details can be found in <a href="https://github.com/icekreem27/titanic-survival-rate" target="_blank">this</a> git repo</div>  
+      </div>
+
+      <!-- PROJECT DETAILS -->
+      <div id="project-details">
+        <div class="subheader-text">Project Details / Background</div>
+        <div class="project-details-content">
+          <div class="body-text">The primary objective of this project was to predict the survival chances of the passengers aboard the Titanic. By investigating the data and applying machine learning models, I aimed to understand which factors influenced survival rates the most.</div>
+          <div class="body-text">
+            <strong>Technologies Used:</strong>
+            <ul>
+              <li><strong>Python/Jupyter Notebook:</strong> Used for all aspects of structure and analysis throughout this project.</li>
+              <li><strong>Pandas and NumPy:</strong> For data preprocessing and all numerical operations.</li>
+              <li><strong>Scikit-learn:</strong> Used to implement machine learning algorithms and preprocessing techniques.</li>
+              <li><strong>Matplotlib and Seaborn:</strong> For data visualisation, helping to interpret the data effectively.</li>
+            </ul>
+            </div>
+        </div>
+      </div>
+
+      <div class="body-text">
+            <strong>Methodology:</strong>
+            <ol>
+                <li><strong>Data Preprocessing</strong><br>
+                    Data preprocessing involved handling missing values, encoding categorical variables, and overall normalising data.
+                </li>
+                <li><strong>Exploratory Data Analysis</strong><br>
+                    Through this stage, I visualised different aspects of the dataset using Pythons Matplotlib and Seaborn libraries. This helped in understanding the distribution of key variables and the relationship between different features and survival rates.
+                </li>
+                <li><strong>Feature Engineering</strong><br>
+                    I created new features that could potentially increase the predictive power of the models. For instance, crafting a feature from passengers' port of embarkation, which provided insights into its impact on survival.
+                </li>
+                <li><strong>Model Selection</strong><br>
+                    I experimented with various machine learning models, including logistic regression and random forests. Each model was evaluated based on its accuracy and precision to select the best performer.
+                </li>
+                <li><strong>Model Tuning</strong><br>
+                    Using grid search and cross-validation, I fine-tuned the hyperparameters of the selected model to best enhance its performance.
+                </li>
+                <li><strong>Prediction and Evaluation</strong><br>
+                    The final step involved making predictions on the test set and evaluating the model using metrics like accuracy, precision, and recall. This provided a quantitative measure of the model's performance.
+                </li>
+            </ol>
+        </div>
+        <div class="body-text">
+            <strong>Results:</strong>
+            <br><br>
+            The best and final model achieved a score of 0.826 on the test set, indicating that it correctly predicted the survival chances of passengers up to 82% of the time.
+            <br><br>
+            Upon submission to Kaggle, the best score was 0.787!
+        </div>
+        <div class="body-text">
+            <strong>Conclusion:</strong>
+            <br><br>
+            This data science project was a really usefull experience that allowed me to delve deep into machine learning and data analysis with a fairly simple dataset. By applying these technologies and methodologies, I gained a deeper understanding of the factors that influenced survival during the Titanic disaster but more importantly, an up close experience with methedologies such as pipelines, feature encoding and one-hot encoding.
+            <br><br>
+            This project is a testament to how historical data can be leveraged to build predictive models that provide insights into past events, demonstrating the power and potential of data science.
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div id="footer">
+      <!-- Github -->
+      <a class="icon-link" href="https://github.com/icekreem27" target="_blank">
+        <image src="../assets/icons/github.svg" class="footer-icon"/>
+      </a>
+
+      <!-- LinkedIn -->
+      <a class="icon-link" target="_blank" href="https://www.linkedin.com/in/karimabbas27/" target="_blank">
+        <image src="../assets/icons/linkedin.svg" class="footer-icon"/>
+      </a>
+      
+      <!-- insta -->
+      <a class="icon-link" target="_blank" href="https://instagram.com/icekreem27" target="_blank">
+        <image src="../assets/icons/instagram.svg" class="footer-icon"/>
+      </a>
+      
+      <!-- Email -->
+      <a class="icon-link" href="mailto:icekreem27@gmail.com" target="_blank">
+        <image src="../assets/icons/mail.svg" class="footer-icon"/>
+      </a>
+    </div>
+	</body>
+</html>
