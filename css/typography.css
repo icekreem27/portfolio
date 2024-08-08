@@ -83,7 +83,7 @@ body {
 /* Pastel colors for specific tags */
 .tag.python { background-color: #a8d5ba; color: #333; } /* Soft green for Python */
 .tag.rag { background-color: #f9ccac; color: #333; } /* Soft orange for RAG */
-.tag.gpt-3.5 { background-color: #a3c4f3; color: #333; } /* Soft blue for GPT-3.5 */
+.tag.gpt { background-color: #a3c4f3; color: #333; } /* Soft blue for GPT-3.5 */
 .tag.fine-tuning { background-color: #c5a3f3; color: #333; } /* Soft purple for Fine-Tuning */
 .tag.selenium { background-color: #d3a68a; color: #333; } /* Soft brown for Selenium */
 .tag.chromeDriver { background-color: #88c9b8; color: #333; } /* Soft teal for ChromeDriver */
