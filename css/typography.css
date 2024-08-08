@@ -62,3 +62,32 @@ body {
   margin: 10px 0; /* Vertical spacing before and after the code block */
 }
 
+.project-tags {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap; /* Allows tags to wrap if they exceed the width of the container */
+  gap: 8px; /* Adds space between the tags */
+}
+
+.tag {
+  display: inline-block;
+  background-color: #e0e0e0; /* Light gray background for neutral look */
+  color: #333; /* Dark gray text */
+  padding: 5px 10px;
+  border-radius: 20px; /* Rounded corners */
+  font-size: 12px;
+  font-weight: 600; /* Bold text for better readability */
+  margin: 2px; /* Ensure minimal space around tags */
+}
+
+/* Pastel colors for specific tags */
+.tag.python { background-color: #a8d5ba; color: #333; } /* Soft green for Python */
+.tag.rag { background-color: #f9ccac; color: #333; } /* Soft orange for RAG */
+.tag.gpt-3.5 { background-color: #a3c4f3; color: #333; } /* Soft blue for GPT-3.5 */
+.tag.fine-tuning { background-color: #c5a3f3; color: #333; } /* Soft purple for Fine-Tuning */
+.tag.selenium { background-color: #d3a68a; color: #333; } /* Soft brown for Selenium */
+.tag.chromeDriver { background-color: #88c9b8; color: #333; } /* Soft teal for ChromeDriver */
+.tag.scikit-learn { background-color: #f7a6a6; color: #333; } /* Soft red for scikit-learn */
+.tag.seaborn { background-color: #a6d3f7; color: #333; } /* Soft blue for seaborn */
+.tag.pandas { background-color: #f9e4a6; color: #333; } /* Soft amber for pandas */
+.tag.numpy { background-color: #c7a6f7; color: #333; } /* Soft purple for numpy */
