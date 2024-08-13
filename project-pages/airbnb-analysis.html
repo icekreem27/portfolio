@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+    <link rel="icon" href="../assets/images/av.png" />
+    <title>Karim's Portfolio</title>
+    <meta name="description" content="A portfolio for all my projects.">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/typography.css">
+    <link rel="stylesheet" href="../css/utilities.css">
+
+		<script defer src="../js/script.js"></script>
+	</head>
+	<body>
+    <!-- NAVBAR -->
+    <div class="navbar">
+      <a class="nav-title-link" href="../index.html">
+        <span class="nav-title">Karim's Portfolio</span>
+      </a>
+      
+      <!-- Buttons Container -->
+      <div class="navbar-buttons">
+        <a class="button" href="../assets/files/Karim Abbas CV.pdf" target="_blank">
+          <span class="button-text">CV</span>
+        </a>
+        <a class="button" href="mailto:contact@karimabbas.com">
+          <span class="button-text">Contact Me</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- MAIN PAGE CONTENT -->
+    <div id="main-content">
+
+      <!-- PROJECT HEADER -->
+      <div id="project-header">
+        <div class="main-title">Airbnb SQL Analysis</div>
+        <div class="body-text">An SQL-driven analysis of Airbnb listings, focusing on SQL and data analysis skills highlighting key market insights.</div>
+        <div class="body-text">The code repository for this project can be found <a href="https://github.com/icekreem27/final-year-project-icekreem27" target="_blank">here</a>.</div>  
+    </div>
+
+    <!-- PROJECT DETAILS -->
+    <div id="project-details">
+        <div class="subheader-text">Project Overview & Background</div>
+        <div class="project-details-content">
+        <div class="body-text">
+            This project is focused on developing my skills in data analysis and SQL using a large dataset of Airbnb listings. The dataset, sourced from <a href="https://mavenanalytics.io/data-playground?order=date_added%2Cdesc&pageSize=20&search=airbnb" target="_blank">Maven Analytics</a>, includes information on over 250,000 listings across 10 major cities, along with more than 5 million historical reviews. My objective was to organise and clean this dataset to enable efficient analysis, ultimately enhancing my proficiency in data management, SQL query optimisation, and data visualisation.
+        </div>
+        <div class="body-text">
+            The initial dataset was provided as a single, large CSV file, which presented challenges in terms of size and data quality. To address these issues, I decided to split the data into several normalised tables: Host, Location, Property, ReviewScores, Listing, and Review. These tables were designed to capture the essential aspects of the dataset while reducing redundancy and improving query efficiency.
+        </div>
+        <div class="body-text">
+            As I began to work with the data, it became clear that the dataset was too large and unclean to manage effectively in its entirety. To tackle this, I decided to work with a subset of 500 rows, which allowed me to focus on cleaning and organising the data before scaling up. During this process, I encountered a challenge with the review data. The reviews CSV file contained a vast number of entries, many of which were not relevant to the listings I had in my database. To solve this, I wrote a Python script that scans all listing IDs from the database and cross-references them with the review IDs in the reviews CSV file, saving only the relevant reviews. This approach ensured that my database remained focused and manageable.
+        </div>
+        <div class="body-text">
+            Initially, I had planned to load the entire dataset into the database and then split it into the new tables using SQL queries. However, this approach proved to be inefficient and cumbersome. Instead, I revised my strategy: I created a database schema that reflected the final normalised structure, and then split the data into new, separate CSV files that mimicked this structure. After preparing these files, I imported them directly into the corresponding tables in the database. This method proved to be much more efficient and ensured that the data was correctly formatted from the start.
+        </div>
+        <div class="body-text">
+            With the database now structured and populated, I identified ten key pieces of information that I wanted to extract from the data. These also served to test if my database was correctly normalised and if my SQL queries were optimised. The questions included:
+            <ul>
+            <li>Who are the most active hosts with the highest number of listings?</li>
+            <li>What is the percentage of superhosts in the dataset?</li>
+            <li>Which neighborhoods have the highest number of Airbnb listings?</li>
+            <li>What is the average price of Airbnb listings in different neighborhoods?</li>
+            <li>What is the distribution of room types across all listings?</li>
+            <li>How do average prices vary across different property types?</li>
+            <li>What are the average review scores for different aspects like cleanliness, communication, and value?</li>
+            <li>Which Airbnb listings have the highest overall review scores?</li>
+            <li>How do prices vary seasonally across different times of the year?</li>
+            <li>How has review activity changed over the years?</li>
+            </ul>
+            These questions guided my analysis and helped me to focus on extracting meaningful insights from the data.
+        </div>
+        <div class="body-text">
+            The next step in this project is to create a comprehensive dashboard that visualises these insights. The dashboard will showcase my ability to transform raw data into actionable knowledge, demonstrating my proficiency in SQL and data visualisation tools.
+        </div>
+        </div>
+    </div>
+    
+    <!-- IMAGE GALLERY -->
+    <div id="project-gallery">
+        <div class="subheader-text">Image Gallery</div>
+        <div class="project-gallery-content">
+        <div class="gallery-image-container half-width">
+            <img src="../assets/images/initial_schema.png" class="gallery-image">
+            <span class="image-caption">Initial Database Schema - The first design before normalisation.</span>
+        </div>
+        <div class="gallery-image-container half-width">
+            <img src="../assets/images/updated_schema.png" class="gallery-image">
+            <span class="image-caption">Updated Database Schema - The final structure after splitting the dataset into normalised tables.</span>
+        </div>
+        </div>
+    </div>
+  
+
+    <!-- FOOTER -->
+    <div id="footer">
+      <!-- Github -->
+      <a class="icon-link" href="https://github.com/icekreem27" target="_blank">
+        <image src="../assets/icons/github.svg" class="footer-icon"/>
+      </a>
+
+      <!-- LinkedIn -->
+      <a class="icon-link" target="_blank" href="https://www.linkedin.com/in/karimabbas27/" target="_blank">
+        <image src="../assets/icons/linkedin.svg" class="footer-icon"/>
+      </a>
+      
+      <!-- insta -->
+      <a class="icon-link" target="_blank" href="https://instagram.com/icekreem27" target="_blank">
+        <image src="../assets/icons/instagram.svg" class="footer-icon"/>
+      </a>
+      
+      <!-- Email -->
+      <a class="icon-link" href="mailto:contact@karimabbas.com" target="_blank">
+        <image src="../assets/icons/mail.svg" class="footer-icon"/>
+      </a>
+    </div>
+	</body>
+</html>

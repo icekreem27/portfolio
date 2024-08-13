@@ -81,13 +81,16 @@ body {
 }
 
 /* Pastel colors for specific tags */
-.tag.python { background-color: #a8d5ba; color: #333; } /* Soft green for Python */
-.tag.rag { background-color: #f9ccac; color: #333; } /* Soft orange for RAG */
-.tag.gpt { background-color: #a3c4f3; color: #333; } /* Soft blue for GPT-3.5 */
-.tag.fine-tuning { background-color: #c5a3f3; color: #333; } /* Soft purple for Fine-Tuning */
-.tag.selenium { background-color: #d3a68a; color: #333; } /* Soft brown for Selenium */
-.tag.chromeDriver { background-color: #88c9b8; color: #333; } /* Soft teal for ChromeDriver */
-.tag.scikit-learn { background-color: #f7a6a6; color: #333; } /* Soft red for scikit-learn */
-.tag.seaborn { background-color: #a6d3f7; color: #333; } /* Soft blue for seaborn */
-.tag.pandas { background-color: #f9e4a6; color: #333; } /* Soft amber for pandas */
-.tag.numpy { background-color: #c7a6f7; color: #333; } /* Soft purple for numpy */
+.tag.python { background-color: #a8d5ba; color: #333; }
+.tag.rag { background-color: #f9ccac; color: #333; }
+.tag.gpt { background-color: #a3c4f3; color: #333; }
+.tag.fine-tuning { background-color: #c5a3f3; color: #333; }
+.tag.selenium { background-color: #d3a68a; color: #333; }
+.tag.chromeDriver { background-color: #88c9b8; color: #333; }
+.tag.scikit-learn { background-color: #f7a6a6; color: #333; }
+.tag.seaborn { background-color: #a6d3f7; color: #333; }
+.tag.pandas { background-color: #f9e4a6; color: #333; }
+.tag.numpy { background-color: #c7a6f7; color: #333; }
+.tag.mysql { background-color: #d3a68a; color: #333; }
+.tag.inprogress { background-color: #e35858; color: #333; }
+
