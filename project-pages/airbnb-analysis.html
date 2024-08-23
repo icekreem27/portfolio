@@ -57,7 +57,7 @@
             As I began to work with the data, it became clear that the dataset was too large and unclean to manage effectively in its entirety. To tackle this, I decided to work with a subset of 500 rows, which allowed me to focus on cleaning and organising the data before scaling up. During this process, I encountered a challenge with the review data. The reviews CSV file contained a vast number of entries, many of which were not relevant to the listings I had in my database. To solve this, I wrote a Python script that scans all listing IDs from the database and cross-references them with the review IDs in the reviews CSV file, saving only the relevant reviews. This approach ensured that my database remained focused and manageable.
         </div>
         <div class="body-text">
-            Initially, I had planned to load the entire dataset into the database and then split it into the new tables using SQL queries. However, this approach proved to be inefficient and cumbersome. Instead, I revised my strategy: I created a database schema that reflected the final normalised structure, and then split the data into new, separate CSV files that mimicked this structure. After preparing these files, I imported them directly into the corresponding tables in the database. This method proved to be much more efficient and ensured that the data was correctly formatted from the start.
+            Initially, I had planned to load the entire dataset into the database and then split it into the new tables using SQL queries. However, this approach proved to be inefficient and tedious. Instead, I revised my strategy: I created a database schema that reflected the final normalised structure, and then split the data into new, separate CSV files that mimicked this structure using pandas. After preparing these files, I imported them directly into the corresponding tables in the database. This method proved to be much more efficient and ensured that the data was correctly formatted from the start.
         </div>
         <div class="body-text">
             With the database now structured and populated, I identified ten key pieces of information that I wanted to extract from the data. These also served to test if my database was correctly normalised and if my SQL queries were optimised. The questions included:
@@ -87,7 +87,7 @@
         <div class="project-gallery-content">
         <div class="gallery-image-container half-width">
             <img src="../assets/images/initial_schema.png" class="gallery-image">
-            <span class="image-caption">Initial Database Schema - The first design before normalisation.</span>
+            <span class="image-caption">Initial Database Schema - The structure of the data before normalisation.</span>
         </div>
         <div class="gallery-image-container half-width">
             <img src="../assets/images/updated_schema.png" class="gallery-image">
