@@ -55,7 +55,7 @@
               <span class="main-title">Hey, </span>
               <br>
               <span class="main-title">I'm Karim</span>
-              <div class="body-text">a final year computer science student with a keen interest in machine learning and data science</div>
+              <div class="body-text">a computer science graduate with a keen interest in machine learning and data science</div>
             </div>
             <div id="links">
               <!-- LinkedIn -->
@@ -87,68 +87,94 @@
       <div id="about-section">
         <span class="subheader-text">About Me</span>
         <div class="about-section-content">
-          <div class="body-text">I'm in my final year of Computer Science with AI at the University of Leeds, with a strong interest in machine learning and data science. My latest project involved working on my third-year dissertation, which focused on enhancing NLP chatbots using Retrieval-Augmented Generation (RAG) and fine-tuning techniques to improve university course teaching. </div>
-          <div class="body-text">Alongside my studies, I've been integrating personal projects with my coursework to deepen my understanding of these concepts in practical settings. I'm continuously seeking new challenges and opportunities to expand my skills in this field!</div>
+          <div class="body-text">I recently graduated from the University of Leeds with a degree in Computer Science with AI, where I developed a strong foundation in machine learning and data science. My masters dissertation centered on the ARMADILLO project, where I worked on developing augmented reality systems for laparoscopic liver operations using computer vision and deep learning techniques. My primary focus involved creating a 3D segmentation model to identify biological landmarks on 3D liver models.</div>
+          <div class="body-text">I'm now working a role in data and advanced analytics, applying my technical skills to real-world business challenges. I'm passionate about leveraging machine learning and data science to drive insights and innovation, and I'm always seeking new opportunities to expand my expertise in this rapidly evolving field!</div>
         </div>
       </div>
+
+      
+      <!-- PUBLICATIONS SECTION -->
+      <div id="publications-section">
+        <span class="subheader-text">Publications</span>
+
+        <div class="publications-container">
+          <div class="publication-item">
+            <div class="publication-title">Midline-Constrained Loss in the Anatomical Landmark Segmentation of 3D Liver Models</div>
+            <div class="publication-authors">A.K. Abbas et al.</div>
+            <div class="publication-venue">Medical Image Understanding and Analysis (MIUA 2025)</div>
+            <a class="publication-link" href="https://doi.org/10.1007/978-3-031-98691-8_16" target="_blank">View Publication</a>
+          </div>
+
+          <div class="publication-item">
+            <div class="publication-title">Intraoperative Segmentation through Deep Learning and Mask Post-processing in Laparoscopic Liver Surgery</div>
+            <div class="publication-authors">J. Borgars et al.</div>
+            <div class="publication-venue">Medical Image Understanding and Analysis (MIUA 2025)</div>
+            <a class="publication-link" href="https://doi.org/10.1007/978-3-031-98694-9_15" target="_blank">View Publication</a>
+          </div>
+        </div>
+      </div>
+
 
       <!-- PROJECTS / MY WORK SECTION -->
       <div id="my-work-section">
         <!-- TODO - Change the subheader-text to whatever you want the Projects section header to say -->
         <span class="subheader-text">My Projects</span>
 
-        <div class="projects-container">
-          <!-- 
-            base level project card to copy:
-            <div class="project-card">
-              <img src="./assets/images/IMAGE_NAME" class="project-image">
-              <div class="project-card-text-container">
-                <div class="subheader-text project-title">PROJECT_NAME</div>
-                <div class="body-text project-card-text">SMALL_PROJECT_DESCRIPTION</div>
-              </div>
-              <div class="project-tags">
-                <span class="tag">Python</span>
-              </div>
-              <a class="button" href="./project-pages/PROJECT_PAGE_NAME.html">
-                <span class="button-text">Read More</span>
-                <image src="./assets/icons/arrow-right.svg" class="right-arrow-icon"/>
-              </a>
+        <!-- Featured Projects (Top Row) -->
+        <div class="featured-projects">
+          <div class="project-card featured">
+            <img src="./assets/images/liver.png" class="project-image">
+            <div class="project-card-text-container">
+              <div class="subheader-text project-title">Masters Project</div>
+              <div class="body-text project-card-text">ARMADILLO: Augmented Reality Machine-Assisted Detection and Inference in Laparoscopic Liver Operations</div>
             </div>
+            <div class="project-tags">
+              <span class="tag python">Python</span>
+              <span class="tag deep-learning">Deep Learning</span>
+              <span class="tag computer-vision">Computer Vision</span>
+              <span class="tag augmented-reality">AR</span>
+              <span class="tag medical">Medical AI</span>
+            </div>
+            <a class="button" href="./project-pages/armadillo.html">
+              <span class="button-text">Read More</span>
+              <img src="./assets/icons/arrow-right.svg" class="right-arrow-icon"/>
+            </a>
+          </div>
 
-            - IMAGE_NAME: the name of the image file in assets/images
-            - PROJECT_NAME: the name of the project
-            - SMALL_PROJECT_DESCRIPTION: a quick project description (max 4 lines)
-            - PROJECT_PAGE_NAME.html: the html filename for the project (must be in project-pages folder)
-          -->
-          <div class="project-card">
+          <div class="project-card featured">
             <img src="./assets/images/ChatGPT_logo.png" class="project-image">
             <div class="project-card-text-container">
               <div class="subheader-text project-title">Third Year Project</div>
               <div class="body-text project-card-text">Enhancing University Learning with Retrieval-Augmented Generation and GPT-3.5 Fine-Tuning</div>
             </div>
             <div class="project-tags">
-              <span class="tag python">python</span>
+              <span class="tag python">Python</span>
               <span class="tag rag">RAG</span>
               <span class="tag gpt">GPT-3.5</span>
               <span class="tag fine-tuning">Fine-Tuning</span>
+              <span class="tag nlp">NLP</span>
             </div>
             <a class="button" href="./project-pages/individual-project.html">
               <span class="button-text">Read More</span>
               <img src="./assets/icons/arrow-right.svg" class="right-arrow-icon"/>
             </a>
           </div>
-          
+        </div>
+
+        <!-- Other Projects (Three Column Layout) -->
+        <div class="projects-container">
           <div class="project-card">
+            <img src="./assets/images/Spotify-Logo.png" class="project-image">
             <div class="project-card-text-container">
-              <img src="./assets/images/Spotify-Logo.png" class="project-image">
               <div class="subheader-text project-title">Spotify Song Recommendations</div>
               <div class="body-text project-card-text">A data science project focused on generating personalised playlist recommendations using cosine similarity</div>
             </div>
             <div class="project-tags">
-              <span class="tag python">python</span>
-              <span class="tag scikit-learn">scikit-learn</span>
-              <span class="tag numpy">numpy</span>
-              <span class="tag pandas">pandas</span>
+              <span class="tag python">Python</span>
+              <span class="tag scikit-learn">Scikit-learn</span>
+              <span class="tag numpy">NumPy</span>
+              <span class="tag pandas">Pandas</span>
+              <span class="tag data-science">Data Science</span>
             </div>
             <a class="button" href="./project-pages/spotify.html">
               <span class="button-text">Read More</span>
@@ -165,10 +191,11 @@
               </div>
             </div>
             <div class="project-tags">
-              <span class="tag python">python</span>
+              <span class="tag python">Python</span>
               <span class="tag mysql">MySQL</span>
               <span class="tag Tableau">Tableau</span>
-              <span class="tag scikit-learn">scikit-learn</span>
+              <span class="tag scikit-learn">Scikit-learn</span>
+              <span class="tag data-analysis">Data Analysis</span>
             </div>
             <a class="button" href="./project-pages/airbnb-analysis.html">
               <span class="button-text">Read More</span>
@@ -176,7 +203,6 @@
             </a>
           </div>
           
-
           <div class="project-card">
             <img src="./assets/images/scikit.svg.png" class="project-image">
             <div class="project-card-text-container">
@@ -184,10 +210,11 @@
               <div class="body-text project-card-text">Developing a regression model to predict cancer mortality rates in various US counties</div>
             </div>
             <div class="project-tags">
-              <span class="tag python">python</span>
-              <span class="tag scikit-learn">scikit-learn</span>
-              <span class="tag seaborn">seaborn</span>
-              <span class="tag pandas">pandas</span>
+              <span class="tag python">Python</span>
+              <span class="tag scikit-learn">Scikit-learn</span>
+              <span class="tag seaborn">Seaborn</span>
+              <span class="tag pandas">Pandas</span>
+              <span class="tag machine-learning">Machine Learning</span>
             </div>
             <a class="button" href="./project-pages/ML-prediction.html">
               <span class="button-text">Read More</span>
@@ -202,10 +229,11 @@
               <div class="body-text project-card-text">Predicting survival through data preprocessing, feature engineering, and advanced machine learning techniques.</div>
             </div>
             <div class="project-tags">
-              <span class="tag python">python</span>
-              <span class="tag scikit-learn">scikit-learn</span>
-              <span class="tag numpy">numpy</span>
-              <span class="tag pandas">pandas</span>
+              <span class="tag python">Python</span>
+              <span class="tag scikit-learn">Scikit-learn</span>
+              <span class="tag numpy">NumPy</span>
+              <span class="tag pandas">Pandas</span>
+              <span class="tag machine-learning">Machine Learning</span>
             </div>
             <a class="button" href="./project-pages/titanic.html">
               <span class="button-text">Read More</span>
@@ -214,15 +242,16 @@
           </div>
           
           <div class="project-card">
+            <img src="./assets/images/code.jpeg" class="project-image">
             <div class="project-card-text-container">
-              <img src="./assets/images/code.jpeg" class="project-image">
               <div class="subheader-text project-title">Minerva WebScraper</div>
               <div class="body-text project-card-text">Created a web scraper to collect lecture files from Minerva Blackboard (used in third year project)</div>
             </div>
             <div class="project-tags">
-              <span class="tag python">python</span>
-              <span class="tag selenium">selenium</span>
-              <span class="tag chromeDriver">chromeDriver</span>
+              <span class="tag python">Python</span>
+              <span class="tag selenium">Selenium</span>
+              <span class="tag chromeDriver">ChromeDriver</span>
+              <span class="tag web-scraping">Web Scraping</span>
             </div>
             <a class="button" href="./project-pages/minerva-scraper.html">
               <span class="button-text">Read More</span>

@@ -94,5 +94,46 @@ body {
 .tag.mysql { background-color: #d3a68a; color: #333; }
 .tag.inprogress { background-color: #e35858; color: #333; }
 .tag.Tableau { background-color: #6986ef; color: #333; }
+.tag.deep-learning { background-color: #f0a6d3; color: #333; }
+.tag.computer-vision { background-color: #a6e6f0; color: #333; }
+.tag.augmented-reality { background-color: #e6a6f0; color: #333; }
+.tag.medical { background-color: #f0d6a6; color: #333; }
+.tag.nlp { background-color: #a6f0d6; color: #333; }
+.tag.data-science { background-color: #d6a6f0; color: #333; }
+.tag.data-analysis { background-color: #a6f0e6; color: #333; }
+.tag.machine-learning { background-color: #f0a6d6; color: #333; }
+.tag.web-scraping { background-color: #a6d6f0; color: #333; }
+
+/* Publication styling */
+.publication-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  line-height: 1.4;
+}
+
+.publication-authors {
+  font-size: 14px;
+  font-weight: 500;
+  color: #666;
+}
+
+.publication-venue {
+  font-size: 14px;
+  font-weight: 400;
+  color: #888;
+}
+
+.publication-link {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  text-decoration: none;
+  width: fit-content;
+}
+
+.publication-link:hover {
+  text-decoration: underline;
+}
 
 
