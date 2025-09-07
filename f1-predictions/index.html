@@ -1,17 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Umami Cloud -->
-    <script defer src="https://cloud.umami.is/script.js" data-website-id="ed5ebed2-6c39-48b0-8d68-c90137007d88"></script>
-
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-3V3DLGWFQX');
-    </script>
-    
     <meta charset="utf-8">
     <link rel="icon" href="../assets/images/av.png" />
     <title>F1 Fantasy Predictions - Karim's Portfolio</title>
@@ -23,24 +12,21 @@
     <link rel="stylesheet" href="../css/utilities.css">
     
     <style>
-        /* Minimalist F1 styling */
+        /* Clean F1 styling */
         .f1-section {
-            margin-bottom: 48px;
+            margin-bottom: 32px;
         }
         
         .race-info {
-            background: #f8f9fa;
-            border: 1px solid #e9ecef;
-            border-radius: 8px;
-            padding: 24px;
-            margin-bottom: 32px;
             text-align: center;
+            margin-bottom: 16px;
         }
         
         .race-info .subheader-text {
             color: #212529;
-            font-size: 24px;
-            margin-bottom: 8px;
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 4px;
         }
         
         .race-info .body-text {
@@ -52,41 +38,41 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-bottom: 32px;
+            margin-bottom: 24px;
         }
         
         .pyramid-row {
             display: flex;
             justify-content: center;
-            gap: 16px;
-            margin-bottom: 16px;
+            gap: 12px;
+            margin-bottom: 12px;
         }
         
         .driver-card {
             background: white;
             border: 1px solid #e9ecef;
             border-radius: 8px;
-            padding: 20px;
+            padding: 16px;
             text-align: center;
-            min-width: 160px;
+            min-width: 150px;
         }
         
         .driver-name {
             font-weight: 700;
             font-size: 16px;
             color: #212529;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             text-transform: uppercase;
         }
         
         .driver-team {
             font-size: 14px;
             color: #6c757d;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
         }
         
         .driver-cost {
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 600;
             color: #28a745;
         }
@@ -94,35 +80,35 @@
         .constructor-row {
             display: flex;
             justify-content: center;
-            gap: 16px;
-            margin-top: 16px;
+            gap: 12px;
+            margin-top: 12px;
         }
         
         .constructor-card {
             background: white;
             border: 1px solid #e9ecef;
             border-radius: 8px;
-            padding: 20px;
+            padding: 16px;
             text-align: center;
-            min-width: 240px;
+            min-width: 200px;
         }
         
         .constructor-name {
             font-weight: 700;
             font-size: 16px;
             color: #212529;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             text-transform: uppercase;
         }
         
         .constructor-type {
             font-size: 14px;
             color: #6c757d;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
         }
         
         .constructor-cost {
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 600;
             color: #28a745;
         }
@@ -130,51 +116,51 @@
         .team-summary {
             background: #f8f9fa;
             border: 1px solid #e9ecef;
-            border-radius: 8px;
-            padding: 24px;
+            border-radius: 6px;
+            padding: 16px;
             text-align: center;
-            margin-top: 24px;
+            margin-top: 16px;
         }
         
         .team-summary .body-text {
             color: #212529;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 600;
         }
         
         .last-updated {
-            font-size: 14px;
+            font-size: 13px;
             color: #6c757d;
             text-align: center;
-            margin-top: 24px;
-            padding: 16px;
+            margin-top: 16px;
+            padding: 12px;
             background: #f8f9fa;
             border: 1px solid #e9ecef;
-            border-radius: 8px;
+            border-radius: 6px;
         }
         
         .disclaimer {
             background: #fff3cd;
             border: 1px solid #ffeaa7;
-            border-radius: 8px;
-            padding: 20px;
-            margin-top: 24px;
-            font-size: 14px;
+            border-radius: 6px;
+            padding: 16px;
+            margin-top: 20px;
+            font-size: 13px;
             color: #856404;
             line-height: 1.5;
         }
         
-        /* Team color coding - minimal borders */
-        .mclaren { border-left: 4px solid #ff8700; }
-        .ferrari { border-left: 4px solid #dc143c; }
-        .red-bull { border-left: 4px solid #1e40af; }
-        .mercedes { border-left: 4px solid #00d2be; }
-        .alpine { border-left: 4px solid #ff6b9d; }
-        .aston-martin { border-left: 4px solid #006f62; }
-        .haas { border-left: 4px solid #6c757d; }
-        .alfa-romeo { border-left: 4px solid #9b59b6; }
-        .williams { border-left: 4px solid #005aff; }
-        .racing-bulls { border-left: 4px solid #1e40af; }
+        /* Team colour coding - thicker side banners */
+        .mclaren { border-left: 8px solid #ff8700; }
+        .ferrari { border-left: 8px solid #dc143c; }
+        .red-bull { border-left: 8px solid #1e40af; }
+        .mercedes { border-left: 8px solid #00d2be; }
+        .alpine { border-left: 8px solid #ff6b9d; }
+        .aston-martin { border-left: 8px solid #006f62; }
+        .haas { border-left: 8px solid #6c757d; }
+        .alfa-romeo { border-left: 8px solid #9b59b6; }
+        .williams { border-left: 8px solid #005aff; }
+        .racing-bulls { border-left: 8px solid #1e40af; }
         
         @media (max-width: 768px) {
             .pyramid-row {
@@ -187,8 +173,6 @@
             }
         }
     </style>
-
-    <script defer src="../js/script.js"></script>
 </head>
 <body>
     <!-- NAVBAR -->
@@ -197,7 +181,6 @@
             <span class="nav-title">Karim's Portfolio</span>
         </a>
         
-        <!-- Buttons Container -->
         <div class="navbar-buttons">
             <a class="button" href="../assets/files/Karim Abbas CV.pdf" target="_blank">
                 <span class="button-text">CV</span>
@@ -208,9 +191,9 @@
         </div>
     </div>
 
-    <!-- MAIN PAGE CONTENT -->
+    <!-- MAIN CONTENT -->
     <div id="main-content">
-        <!-- F1 PREDICTIONS HEADER -->
+        <!-- HEADER -->
         <div id="portfolio-header">
             <div id="portfolio-header-text-container">
                 <div class="header-text">
@@ -220,15 +203,15 @@
             </div>
         </div>
 
-        <!-- RACE INFORMATION -->
+        <!-- RACE INFO -->
         <div class="f1-section">
             <div class="race-info">
-                <span class="subheader-text">Singapore Grand Prix</span>
-                <div class="body-text">Race Date: 2025-09-21</div>
+                <span class="subheader-text">Azerbaijan Grand Prix</span>
+                <div class="body-text">Race Date: 2025-09-19</div>
             </div>
         </div>
 
-        <!-- FANTASY TEAM SECTION -->
+        <!-- TEAM -->
         <div class="f1-section">
             <span class="subheader-text">Optimal Fantasy Team</span>
             
@@ -289,7 +272,7 @@
             </div>
             
             <div class="team-summary">
-                <div class="body-text">Total Cost: $67.1M | Expected Points: 41.8</div>
+                <div class="body-text">Total Cost: $67.1M | Expected Points: 43.8</div>
             </div>
         </div>
 
@@ -302,7 +285,7 @@
 
         <!-- LAST UPDATED -->
         <div class="last-updated">
-            Last updated: 2025-09-07 20:33 UTC
+            Last updated: 2025-09-07 20:49 UTC
         </div>
     </div>
 </body>
