@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Umami Cloud -->
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="ed5ebed2-6c39-48b0-8d68-c90137007d88"></script>
+
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-3V3DLGWFQX');
+    </script>
+    
+    <meta charset="utf-8">
+    <link rel="icon" href="../assets/images/av.png" />
+    <title>F1 Fantasy Predictions - Karim's Portfolio</title>
+    <meta name="description" content="AI-powered F1 Fantasy team predictions using Monte Carlo simulations and real race data.">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/typography.css">
+    <link rel="stylesheet" href="../css/utilities.css">
+    
+    <style>
+        /* F1-specific styling that matches portfolio theme */
+        .f1-section {
+            margin-bottom: 48px;
+        }
+        
+        .f1-card {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 24px;
+            border: 1px solid #e9ecef;
+        }
+        
+        .driver-card {
+            background: white;
+            border-radius: 6px;
+            padding: 16px;
+            margin-bottom: 12px;
+            border-left: 4px solid #007bff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .driver-name {
+            font-weight: 700;
+            font-size: 16px;
+            color: #212529;
+            margin-bottom: 4px;
+        }
+        
+        .driver-team {
+            font-size: 14px;
+            color: #6c757d;
+            margin-bottom: 8px;
+        }
+        
+        .driver-stats {
+            font-size: 14px;
+            color: #495057;
+        }
+        
+        .team-summary {
+            background: #e3f2fd;
+            border-radius: 6px;
+            padding: 16px;
+            text-align: center;
+            margin-top: 16px;
+        }
+        
+        .race-info {
+            background: #f8f9fa;
+            border-radius: 6px;
+            padding: 16px;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+        
+        .last-updated {
+            font-size: 14px;
+            color: #6c757d;
+            text-align: center;
+            margin-top: 24px;
+        }
+        
+        .disclaimer {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 6px;
+            padding: 16px;
+            margin-top: 24px;
+            font-size: 14px;
+            color: #856404;
+        }
+    </style>
+
+    <script defer src="../js/script.js"></script>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <div class="navbar">
+        <a class="nav-title-link" href="../index.html">
+            <span class="nav-title">Karim's Portfolio</span>
+        </a>
+        
+        <!-- Buttons Container -->
+        <div class="navbar-buttons">
+            <a class="button" href="../assets/files/Karim Abbas CV.pdf" target="_blank">
+                <span class="button-text">CV</span>
+            </a>
+            <a class="button" href="mailto:contact@karimabbas.com">
+                <span class="button-text">Contact Me</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- MAIN PAGE CONTENT -->
+    <div id="main-content">
+        <!-- F1 PREDICTIONS HEADER -->
+        <div id="portfolio-header">
+            <div id="portfolio-header-text-container">
+                <div class="header-text">
+                    <span class="main-title">🏎️ F1 Fantasy Predictions</span>
+                    <div class="body-text">AI-powered team recommendations using Monte Carlo simulations and real 2025 season data</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RACE INFORMATION -->
+        <div class="f1-section">
+            <div class="race-info">
+                <span class="subheader-text">{race_name}</span>
+                <div class="body-text">Race Date: {race_date}</div>
+            </div>
+        </div>
+
+        <!-- FANTASY TEAM SECTION -->
+        <div class="f1-section">
+            <span class="subheader-text">Optimal Fantasy Team</span>
+            
+            <div class="f1-card">
+                {team_html}
+                
+                <div class="team-summary">
+                    <div class="body-text" style="font-weight: 700;">{team_summary}</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- DISCLAIMER -->
+        <div class="disclaimer">
+            <strong>⚠️ Disclaimer:</strong> These predictions are based on statistical analysis and historical data. 
+            F1 results can be unpredictable, so use these recommendations as a guide only. 
+            Always do your own research before making fantasy team decisions.
+        </div>
+
+        <!-- LAST UPDATED -->
+        <div class="last-updated">
+            Last updated: 2025-09-07 19:25 UTC
+        </div>
+    </div>
+</body>
+</html>
