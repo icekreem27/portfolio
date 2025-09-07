@@ -23,60 +23,197 @@
     <link rel="stylesheet" href="../css/utilities.css">
     
     <style>
-        /* F1-specific styling that matches portfolio theme */
+        /* F1-specific styling inspired by official F1 website */
         .f1-section {
             margin-bottom: 48px;
         }
         
-        .f1-card {
-            background: #f8f9fa;
-            border-radius: 8px;
+        .race-info {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            border-radius: 12px;
             padding: 24px;
+            margin-bottom: 32px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        .race-info .subheader-text {
+            color: white;
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+        
+        .race-info .body-text {
+            color: rgba(255,255,255,0.9);
+            font-size: 16px;
+        }
+        
+        .fantasy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
             margin-bottom: 24px;
-            border: 1px solid #e9ecef;
         }
         
         .driver-card {
             background: white;
-            border-radius: 6px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .driver-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        }
+        
+        .driver-image {
+            height: 120px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .driver-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(0,0,0,0.1), rgba(0,0,0,0.3));
+        }
+        
+        .driver-initials {
+            position: relative;
+            z-index: 2;
+            font-size: 48px;
+            font-weight: 900;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .driver-info {
             padding: 16px;
-            margin-bottom: 12px;
-            border-left: 4px solid #007bff;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         
         .driver-name {
             font-weight: 700;
-            font-size: 16px;
+            font-size: 18px;
             color: #212529;
             margin-bottom: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         
         .driver-team {
             font-size: 14px;
             color: #6c757d;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
+            font-weight: 500;
         }
         
-        .driver-stats {
+        .driver-cost {
+            font-size: 16px;
+            font-weight: 700;
+            color: #28a745;
+        }
+        
+        .constructor-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 24px;
+        }
+        
+        .constructor-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .constructor-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        }
+        
+        .constructor-image {
+            height: 100px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .constructor-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(0,0,0,0.1), rgba(0,0,0,0.3));
+        }
+        
+        .constructor-logo {
+            position: relative;
+            z-index: 2;
+            font-size: 32px;
+            font-weight: 900;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .constructor-info {
+            padding: 16px;
+        }
+        
+        .constructor-name {
+            font-weight: 700;
+            font-size: 18px;
+            color: #212529;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .constructor-type {
             font-size: 14px;
-            color: #495057;
+            color: #6c757d;
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+        
+        .constructor-cost {
+            font-size: 16px;
+            font-weight: 700;
+            color: #28a745;
         }
         
         .team-summary {
-            background: #e3f2fd;
-            border-radius: 6px;
-            padding: 16px;
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            border-radius: 12px;
+            padding: 24px;
             text-align: center;
-            margin-top: 16px;
+            margin-top: 24px;
+            color: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
         
-        .race-info {
-            background: #f8f9fa;
-            border-radius: 6px;
-            padding: 16px;
-            margin-bottom: 24px;
-            text-align: center;
+        .team-summary .body-text {
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
         }
         
         .last-updated {
@@ -84,16 +221,41 @@
             color: #6c757d;
             text-align: center;
             margin-top: 24px;
+            padding: 16px;
+            background: #f8f9fa;
+            border-radius: 8px;
         }
         
         .disclaimer {
             background: #fff3cd;
             border: 1px solid #ffeaa7;
-            border-radius: 6px;
-            padding: 16px;
+            border-radius: 8px;
+            padding: 20px;
             margin-top: 24px;
             font-size: 14px;
             color: #856404;
+            line-height: 1.5;
+        }
+        
+        /* Team color coding */
+        .mclaren { background: linear-gradient(135deg, #ff8700 0%, #ff6b35 100%); }
+        .ferrari { background: linear-gradient(135deg, #dc143c 0%, #b22222 100%); }
+        .red-bull { background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%); }
+        .mercedes { background: linear-gradient(135deg, #00d2be 0%, #009688 100%); }
+        .alpine { background: linear-gradient(135deg, #ff6b9d 0%, #e91e63 100%); }
+        .aston-martin { background: linear-gradient(135deg, #006f62 0%, #004d40 100%); }
+        .haas { background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%); color: #000 !important; }
+        .alfa-romeo { background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%); }
+        .williams { background: linear-gradient(135deg, #005aff 0%, #003d99 100%); }
+        .racing-bulls { background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%); }
+        
+        @media (max-width: 768px) {
+            .fantasy-grid {
+                grid-template-columns: 1fr;
+            }
+            .constructor-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 
@@ -141,68 +303,89 @@
         <div class="f1-section">
             <span class="subheader-text">Optimal Fantasy Team</span>
             
-            <div class="f1-card">
+            <div class="fantasy-grid">
                 
         <div class="driver-card">
-            <div class="driver-name">Isack Hadjar</div>
-            <div class="driver-team">Racing Bulls</div>
-            <div class="driver-stats">
-                Cost: $5.1M
+            <div class="driver-image racing-bulls">
+                <div class="driver-initials">I. H</div>
+            </div>
+            <div class="driver-info">
+                <div class="driver-name">ISACK HADJAR</div>
+                <div class="driver-team">Racing Bulls</div>
+                <div class="driver-cost">$5.1M</div>
             </div>
         </div>
         
         <div class="driver-card">
-            <div class="driver-name">Esteban Ocon</div>
-            <div class="driver-team">Haas</div>
-            <div class="driver-stats">
-                Cost: $8.5M
+            <div class="driver-image haas">
+                <div class="driver-initials">E. O</div>
+            </div>
+            <div class="driver-info">
+                <div class="driver-name">ESTEBAN OCON</div>
+                <div class="driver-team">Haas</div>
+                <div class="driver-cost">$8.5M</div>
             </div>
         </div>
         
         <div class="driver-card">
-            <div class="driver-name">Oliver Bearman</div>
-            <div class="driver-team">Haas</div>
-            <div class="driver-stats">
-                Cost: $7.5M
+            <div class="driver-image haas">
+                <div class="driver-initials">O. B</div>
+            </div>
+            <div class="driver-info">
+                <div class="driver-name">OLIVER BEARMAN</div>
+                <div class="driver-team">Haas</div>
+                <div class="driver-cost">$7.5M</div>
             </div>
         </div>
         
         <div class="driver-card">
-            <div class="driver-name">Pierre Gasly</div>
-            <div class="driver-team">Alpine</div>
-            <div class="driver-stats">
-                Cost: $5.4M
+            <div class="driver-image alpine">
+                <div class="driver-initials">P. G</div>
+            </div>
+            <div class="driver-info">
+                <div class="driver-name">PIERRE GASLY</div>
+                <div class="driver-team">Alpine</div>
+                <div class="driver-cost">$5.4M</div>
             </div>
         </div>
         
         <div class="driver-card">
-            <div class="driver-name">Franco Colapinto</div>
-            <div class="driver-team">Alpine</div>
-            <div class="driver-stats">
-                Cost: $4.5M
+            <div class="driver-image alpine">
+                <div class="driver-initials">F. C</div>
+            </div>
+            <div class="driver-info">
+                <div class="driver-name">FRANCO COLAPINTO</div>
+                <div class="driver-team">Alpine</div>
+                <div class="driver-cost">$4.5M</div>
             </div>
         </div>
         
-        <div class="driver-card">
-            <div class="driver-name">Haas</div>
-            <div class="driver-team">Constructor</div>
-            <div class="driver-stats">
-                Cost: $11.8M
+        <div class="constructor-card">
+            <div class="constructor-image ferrari">
+                <div class="constructor-logo">FER</div>
+            </div>
+            <div class="constructor-info">
+                <div class="constructor-name">Ferrari</div>
+                <div class="constructor-type">Constructor</div>
+                <div class="constructor-cost">$30.3M</div>
             </div>
         </div>
         
-        <div class="driver-card">
-            <div class="driver-name">Alpine</div>
-            <div class="driver-team">Constructor</div>
-            <div class="driver-stats">
-                Cost: $8.3M
+        <div class="constructor-card">
+            <div class="constructor-image red-bull">
+                <div class="constructor-logo">RED</div>
+            </div>
+            <div class="constructor-info">
+                <div class="constructor-name">Red Bull Racing</div>
+                <div class="constructor-type">Constructor</div>
+                <div class="constructor-cost">$28.4M</div>
             </div>
         </div>
         
-                
-                <div class="team-summary">
-                    <div class="body-text" style="font-weight: 700;">Total Cost: $51.1M | Expected Points: 43.9</div>
-                </div>
+            </div>
+            
+            <div class="team-summary">
+                <div class="body-text">Total Cost: $89.7M | Expected Points: 43.9</div>
             </div>
         </div>
 
@@ -215,7 +398,7 @@
 
         <!-- LAST UPDATED -->
         <div class="last-updated">
-            Last updated: 2025-09-07 19:35 UTC
+            Last updated: 2025-09-07 19:41 UTC
         </div>
     </div>
 </body>
