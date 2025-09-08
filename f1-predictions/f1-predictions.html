@@ -14,19 +14,19 @@
     <style>
         /* Clean F1 styling */
         .f1-section {
-            margin-bottom: 32px;
+            margin-bottom: -60px;
         }
         
         .race-info {
             text-align: center;
-            margin-bottom: 16px;
+            margin-bottom: -10px;
         }
         
         .race-info .subheader-text {
             color: #212529;
             font-size: 26px;
             font-weight: 700;
-            margin-bottom: 4px;
+            margin-bottom: 2px;
         }
         
         .race-info .body-text {
@@ -38,23 +38,42 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-bottom: 24px;
+            margin-top: 6px;
+            margin-bottom: 14px;
         }
         
         .pyramid-row {
             display: flex;
             justify-content: center;
-            gap: 12px;
-            margin-bottom: 12px;
+            gap: 8px;
+            margin-bottom: 8px;
         }
         
         .driver-card {
             background: white;
             border: 1px solid #e9ecef;
             border-radius: 8px;
-            padding: 16px;
+            padding: 26px 16px 14px 16px; /* extra top space for 2x badge */
             text-align: center;
-            min-width: 150px;
+            width: 187px; /* uniform width */
+            min-height: 10px; /* uniform height */
+            box-sizing: border-box;
+            position: relative;
+        }
+        
+        /* 2x top pill badge */
+        .badge-2x {
+            position: absolute;
+            top: 6px;
+            transform: translateX(-50%);
+            background: #000;
+            color: #fff;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: 700;
+            line-height: 1.25;
+            z-index: 2;
         }
         
         .driver-name {
@@ -68,7 +87,7 @@
         .driver-team {
             font-size: 14px;
             color: #6c757d;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
         
         .driver-cost {
@@ -80,15 +99,15 @@
         .constructor-row {
             display: flex;
             justify-content: center;
-            gap: 12px;
-            margin-top: 12px;
+            gap: 10px;
+            margin-top: 8px;
         }
         
         .constructor-card {
             background: white;
             border: 1px solid #e9ecef;
             border-radius: 8px;
-            padding: 16px;
+            padding: 14px;
             text-align: center;
             min-width: 200px;
         }
@@ -104,7 +123,7 @@
         .constructor-type {
             font-size: 14px;
             color: #6c757d;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
         
         .constructor-cost {
@@ -117,9 +136,10 @@
             background: #f8f9fa;
             border: 1px solid #e9ecef;
             border-radius: 6px;
-            padding: 16px;
+            padding: 10px 14px;
             text-align: center;
-            margin-top: 16px;
+            display: table; /* shrink to content width */
+            margin: 10px auto 0; /* center horizontally */
         }
         
         .team-summary .body-text {
@@ -151,16 +171,16 @@
         }
         
         /* Team colour coding - thicker side banners */
-        .mclaren { border-left: 8px solid #ff8700; }
-        .ferrari { border-left: 8px solid #dc143c; }
-        .red-bull { border-left: 8px solid #1e40af; }
-        .mercedes { border-left: 8px solid #00d2be; }
-        .alpine { border-left: 8px solid #ff6b9d; }
-        .aston-martin { border-left: 8px solid #006f62; }
-        .haas { border-left: 8px solid #6c757d; }
-        .alfa-romeo { border-left: 8px solid #9b59b6; }
-        .williams { border-left: 8px solid #005aff; }
-        .racing-bulls { border-left: 8px solid #1e40af; }
+        .mclaren { border-left: 12px solid #ff8700; }
+        .ferrari { border-left: 12px solid #dc143c; }
+        .red-bull { border-left: 12px solid #1e40af; }
+        .mercedes { border-left: 12px solid #00d2be; }
+        .alpine { border-left: 12px solid #ff6b9d; }
+        .aston-martin { border-left: 12px solid #006f62; }
+        .haas { border-left: 12px solid #6c757d; }
+        .alfa-romeo { border-left: 12px solid #9b59b6; }
+        .williams { border-left: 12px solid #005aff; }
+        .racing-bulls { border-left: 12px solid #1e40af; }
         
         @media (max-width: 768px) {
             .pyramid-row {
@@ -212,59 +232,57 @@
         </div>
 
         <!-- TEAM -->
-        <div class="f1-section">
-            <span class="subheader-text">Optimal Fantasy Team</span>
-            
+        <div class="f1-section">            
             <div class="pyramid-container">
                 
     <div class="pyramid-row">
         
-        <div class="driver-card haas">
-            <div class="driver-name">ESTEBAN OCON</div>
-            <div class="driver-team">Haas</div>
-            <div class="driver-cost">$12.1M</div>
+        <div class="driver-card williams"><div class="badge-2x">2x</div>
+            <div class="driver-name">A. ALBON</div>
+            <div class="driver-team">Williams</div>
+            <div class="driver-cost">$14.7M</div>
         </div>
         
         <div class="driver-card haas">
-            <div class="driver-name">OLIVER BEARMAN</div>
+            <div class="driver-name">E. OCON</div>
             <div class="driver-team">Haas</div>
-            <div class="driver-cost">$11.2M</div>
+            <div class="driver-cost">$12.1M</div>
         </div>
         
     </div>
     <div class="pyramid-row">
         
-        <div class="driver-card racing-bulls">
-            <div class="driver-name">ISACK HADJAR</div>
-            <div class="driver-team">Racing Bulls</div>
-            <div class="driver-cost">$8.3M</div>
+        <div class="driver-card haas">
+            <div class="driver-name">O. BEARMAN</div>
+            <div class="driver-team">Haas</div>
+            <div class="driver-cost">$11.2M</div>
         </div>
         
         <div class="driver-card alpine">
-            <div class="driver-name">PIERRE GASLY</div>
-            <div class="driver-team">Alpine</div>
-            <div class="driver-cost">$8.0M</div>
-        </div>
-        
-        <div class="driver-card alpine">
-            <div class="driver-name">FRANCO COLAPINTO</div>
+            <div class="driver-name">F. COLAPINTO</div>
             <div class="driver-team">Alpine</div>
             <div class="driver-cost">$7.4M</div>
+        </div>
+        
+        <div class="driver-card racing-bulls">
+            <div class="driver-name">L. LAWSON</div>
+            <div class="driver-team">Racing Bulls</div>
+            <div class="driver-cost">$7.0M</div>
         </div>
         
     </div>
     <div class="constructor-row">
         
-        <div class="constructor-card haas">
-            <div class="constructor-name">HAAS</div>
+        <div class="constructor-card mclaren">
+            <div class="constructor-name">MCLAREN</div>
             <div class="constructor-type">Constructor</div>
-            <div class="constructor-cost">$11.8M</div>
+            <div class="constructor-cost">$34.2M</div>
         </div>
         
-        <div class="constructor-card alpine">
-            <div class="constructor-name">ALPINE</div>
+        <div class="constructor-card mercedes">
+            <div class="constructor-name">MERCEDES</div>
             <div class="constructor-type">Constructor</div>
-            <div class="constructor-cost">$8.3M</div>
+            <div class="constructor-cost">$25.7M</div>
         </div>
         
     </div>
@@ -272,7 +290,7 @@
             </div>
             
             <div class="team-summary">
-                <div class="body-text">Total Cost: $67.1M | Expected Points: 43.8</div>
+                <div class="body-text">Total Cost: $112.3M<br>Expected Points: 143.8</div>
             </div>
         </div>
 
@@ -280,13 +298,35 @@
         <div class="disclaimer">
             <strong>⚠️ Disclaimer:</strong> These predictions are based on statistical analysis and historical data. 
             F1 results can be unpredictable, so use these recommendations as a guide only. 
-            Always do your own research before making fantasy team decisions.
         </div>
 
         <!-- LAST UPDATED -->
         <div class="last-updated">
-            Last updated: 2025-09-07 20:49 UTC
+            Last updated: 2025-09-08 12:08 UTC
         </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div id="footer">
+        <!-- Github -->
+        <a class="icon-link" href="https://github.com/icekreem27" target="_blank">
+            <image src="../assets/icons/github.svg" class="footer-icon"/>
+        </a>
+
+        <!-- LinkedIn -->
+        <a class="icon-link" target="_blank" href="https://www.linkedin.com/in/karimabbas27/" target="_blank">
+            <image src="../assets/icons/linkedin.svg" class="footer-icon"/>
+        </a>
+        
+        <!-- insta -->
+        <a class="icon-link" target="_blank" href="https://instagram.com/icekreem27" target="_blank">
+            <image src="../assets/icons/instagram.svg" class="footer-icon"/>
+        </a>
+        
+        <!-- Email -->
+        <a class="icon-link" href="mailto:contact@karimabbas.com" target="_blank">
+            <image src="../assets/icons/mail.svg" class="footer-icon"/>
+        </a>
     </div>
 </body>
 </html>
