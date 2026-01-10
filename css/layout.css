@@ -125,6 +125,11 @@ body {
       object-position: center;
     }
 
+    .project-image.greyed-out {
+      filter: grayscale(100%);
+      opacity: 0.6;
+    }
+
 
 
 

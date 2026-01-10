@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>    
+    <!-- Umami Cloud -->
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="ed5ebed2-6c39-48b0-8d68-c90137007d88"></script>
+    <meta charset="utf-8">
+    <link rel="icon" href="../assets/images/av.png" />
+    <title>LapByLap - F1 Fantasy Web Application - Karim's Portfolio</title>
+    <meta name="description" content="A full-stack web application for F1 Fantasy team optimization using Monte Carlo simulations and real-time race data analysis.">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/typography.css">
+    <link rel="stylesheet" href="../css/utilities.css">
+
+    <script defer src="../js/script.js"></script>
+	</head>
+	<body>
+    <!-- NAVBAR -->
+    <div class="navbar">
+      <a class="nav-title-link" href="../index.html">
+        <span class="nav-title">Karim's Portfolio</span>
+      </a>
+      
+      <!-- Buttons Container -->
+      <div class="navbar-buttons">
+        <!-- <a class="button" href="../assets/files/Karim Abbas CV.pdf" target="_blank">
+          <span class="button-text">CV</span>
+        </a> -->
+        <a class="button" href="mailto:contact@karimabbas.com">
+          <span class="button-text">Contact Me</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- MAIN PAGE CONTENT -->
+    <div id="main-content">
+
+        <!-- PROJECT HEADER -->
+        <div id="project-header">
+            <div class="main-title">LapByLap - F1 Fantasy Web Application</div>
+            <div class="body-text">A full-stack web application that provides data-driven F1 Fantasy team recommendations through Monte Carlo simulations, real-time race data analysis, and optimisation algorithms. The platform combines statistical modelling with a user interface to help users make informed fantasy team decisions.</div>
+            <div class="body-text">Live application available at <a href="https://lapbylap.karimabbas.com" target="_blank">lapbylap.karimabbas.com</a></div>  
+        </div>
+
+      <!-- PROJECT DETAILS -->
+      <div id="project-details">
+        <div class="subheader-text">Project Overview</div>
+        <div class="project-details-content">
+          <div class="body-text">
+            LapByLap is an ongoing side project that evolved from a proof-of-concept Python script into a web application. The platform uses Monte Carlo simulation techniques to model Formula 1 race outcomes and optimise fantasy team selections based on statistical analysis of historical race data. The application provides insights through visualisations and race predictions.
+            <br><br>
+            The system processes official F1 timing data to extract driver performance metrics, track characteristics, and race dynamics. These parameters feed into a simulation engine that runs thousands of race scenarios, generating probability distributions for finishing positions and fantasy point outcomes. The optimisation layer then selects team compositions within budget constraints, balancing expected value with risk-adjusted returns.
+          </div>
+          <div class="body-text">
+            <strong>Technologies & Architecture:</strong>
+            <ul>
+              <li><strong>Frontend:</strong> React with Vite for UI development. Three.js integration for visualisations and race simulations.</li>
+              <li><strong>Backend:</strong> FastAPI framework providing RESTful API endpoints for simulation execution, data retrieval, and team optimisation. PostgreSQL database for storing race data and simulation results.</li>
+              <li><strong>Simulation Engine:</strong> Custom Monte Carlo implementation running 5,000+ iterations per race, modelling lap-by-lap progression with stochastic position changes, tyre degradation, fuel effects, and race events.</li>
+              <li><strong>Optimisation:</strong> Linear programming using PuLP library to solve multi-objective team selection problems within F1 Fantasy budget constraints.</li>
+              <li><strong>Data Processing:</strong> FastF1 library for extracting official F1 timing data. NumPy and Pandas for statistical analysis and data aggregation.</li>
+              <li><strong>Deployment:</strong> Docker containerisation with Nginx reverse proxy and SSL certificate management.</li>
+            </ul>
+          </div>   
+          <div class="body-text">
+                <strong>Core Features</strong>
+                <br><br>
+                The application provides several features for the F1 Fantasy experience. The Race Week module generates team recommendations for upcoming races, incorporating current driver prices, recent form, and track-specific characteristics. The Analytics section offers visualisations including position progression charts, value analysis quadrants, and animated lap-by-lap race simulations that show how driver positions evolve throughout a race.
+                <br><br>
+                The Backtesting functionality allows users to evaluate historical performance by running simulations on past races and comparing predicted outcomes against actual results. The My Team section provides team management, allowing users to track their selections and compare them against recommendations.
+            </div>
+            <div class="body-text">
+                <strong>Monte Carlo Simulation Methodology</strong>
+                <br><br>
+                The simulation engine models race outcomes through probabilistic sampling of driver performance distributions. Each simulation runs lap-by-lap, with driver positions evolving based on pace advantages, volatility factors, and stochastic events. The model incorporates track-specific parameters such as overtaking difficulty, safety car probability, and weather conditions. Driver performance is characterised by statistical distributions derived from historical qualifying and race lap times, accounting for variability in performance consistency.
+                <br><br>
+                The simulation accounts for multiple race dynamics including tyre degradation effects that progressively slow drivers over race distance, fuel load impacts that improve lap times as fuel burns off, and traffic penalties that affect drivers based on their position. Safety car periods and weather events are modelled probabilistically based on historical track data. Each simulation generates a complete race outcome, producing distributions for finishing positions, fantasy points, and team performance metrics.
+            </div>
+            <div class="body-text">
+                <strong>Team Optimization Algorithm</strong>
+                <br><br>
+                The optimisation layer employs multi-objective optimisation to select team compositions. The algorithm balances expected value maximisation with risk-adjusted portfolio theory, considering both mean performance and variance in outcomes. For large league formats, the optimiser incorporates upside potential analysis, selecting teams with higher variance that can outperform in favourable scenarios.
+                <br><br>
+                The optimisation problem is formulated as a linear programming model with constraints including total budget limits, maximum driver and constructor selections, and team representation limits. The solver evaluates thousands of potential team combinations, scoring each based on expected points, risk metrics, and value efficiency. The algorithm also identifies multiplier selections (2x and 3x drivers) that maximise expected returns.
+            </div>
+            <div class="body-text">
+                <strong>Data Pipeline & Processing</strong>
+                <br><br>
+                The application maintains a data pipeline that processes official F1 timing data from completed races. The FastF1 library extracts telemetry including lap times, sector times, tyre compounds, and race events. This raw data undergoes aggregation and statistical analysis to compute driver performance parameters such as mean qualifying pace, race pace distributions, tyre degradation rates, and DNF probabilities.
+                <br><br>
+                The data processing layer handles missing data, accounts for track evolution effects in qualifying, and normalises performance metrics across different track types. Historical data is weighted by recency to capture current form, with more recent races having greater influence on performance predictions. The system maintains a cache of processed race data to optimise simulation execution times while ensuring data freshness.
+            </div>
+            <div class="body-text">
+                <strong>Visualization & User Experience</strong>
+                <br><br>
+                The frontend provides visualisations that make statistical outputs accessible to users. Position progression charts show how driver positions evolve throughout a race, with animated GIFs illustrating lap-by-lap movement. Value analysis quadrants plot drivers based on expected points versus cost, helping users identify high-value selections. The application uses Three.js for visualisations.
+                <br><br>
+                The user interface is designed for clarity and ease of use, with responsive layouts that work across desktop and mobile devices. Loading states and progress indicators provide feedback during simulation execution. The design incorporates F1 team colour schemes and branding elements aligned with the sport's visual identity.
+            </div>
+            <div class="body-text">
+                <strong>Development & Future Enhancements</strong>
+                <br><br>
+                This project represents an ongoing effort to develop and maintain the application while continuously improving the underlying models and user experience. The system is maintained and updated throughout the F1 season, with new features and refinements added based on user feedback and performance analysis.
+                <br><br>
+                Planned enhancements include real-time data integration for live race updates, machine learning integration to improve prediction accuracy, advanced strategy modelling that accounts for pit stop timing and tyre compound selection, and social features that enable users to share team selections and compete in leagues. The application serves as a platform for continuous learning and skill development, particularly in full-stack development, statistical modelling, and data science applications.
+              </div>
+              
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div id="footer">
+      <!-- Github -->
+      <a class="icon-link" href="https://github.com/icekreem27" target="_blank">
+        <image src="../assets/icons/github.svg" class="footer-icon"/>
+      </a>
+
+      <!-- LinkedIn -->
+      <a class="icon-link" target="_blank" href="https://www.linkedin.com/in/karimabbas27/" target="_blank">
+        <image src="../assets/icons/linkedin.svg" class="footer-icon"/>
+      </a>
+      
+      <!-- insta -->
+      <a class="icon-link" target="_blank" href="https://instagram.com/icekreem27" target="_blank">
+        <image src="../assets/icons/instagram.svg" class="footer-icon"/>
+      </a>
+      
+      <!-- Email -->
+      <a class="icon-link" href="mailto:contact@karimabbas.com" target="_blank">
+        <image src="../assets/icons/mail.svg" class="footer-icon"/>
+      </a>
+    </div>
+	</body>
+</html>
+

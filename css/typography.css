@@ -103,6 +103,9 @@ body {
 .tag.data-analysis { background-color: #a6f0e6; color: #333; }
 .tag.machine-learning { background-color: #f0a6d6; color: #333; }
 .tag.web-scraping { background-color: #a6d6f0; color: #333; }
+.tag.react { background-color: #61dafb; color: #333; }
+.tag.fastapi { background-color: #009688; color: #fff; }
+.tag.proof-of-concept { background-color: #9e9e9e; color: #fff; }
 
 /* Publication styling */
 .publication-title {
