@@ -1,0 +1,62 @@
+{
+ "meta": {
+  "title": "What the forecast is worth to someone sending vans",
+  "caption": "Each window is one dock and four hours (07:00 to 10:59 on weekdays, 11:00 to 14:59 at weekends). The operator picks how many bikes to have in the dock at the start, and changing the level costs a van stop. Costs are per window. The oracle sees the future. Every input that is not sourced is an assumption, which is why the sweep is the result and the base case is not.",
+  "policies": {
+   "no rebalancing": "Leave the dock at half full.",
+   "last week as certain": "Plan the van as if last week's counts were exact.",
+   "model mean as certain": "Plan the van as if the model's average were exact.",
+   "quantile (full forecast)": "Plan the van against 200 sampled outcomes from the forecast and pick the cheapest level.",
+   "quantile (joint forecast)": "The same, with hours and departures and returns drawn as moving together.",
+   "oracle": "Sees what happened. Cannot be beaten."
+  },
+  "source_tables": [
+   "data/processed/decision.parquet",
+   "data/processed/holdout_decision.parquet"
+  ]
+ },
+ "assumptions": [
+  {
+   "input": "Docks per station",
+   "value": "13 to 55, mean 29",
+   "status": "sourced",
+   "source": "TfL BikePoint listing, fetched 29 Oct 2026. Today's working docks, not the layout on every day."
+  },
+  {
+   "input": "Value of a lost trip",
+   "value": 1.65,
+   "status": "sourced as a price",
+   "source": "Pay-as-you-go fare for 30 minutes. TfL's average income per hire was 1.09 to 1.12 in 2017/18; an e-bike ride is about 3.30; the sweep covers 1.10 to 3.30."
+  },
+  {
+   "input": "Bikes a van holds",
+   "value": 18,
+   "status": "sourced, old",
+   "source": "European Cycling Federation presentation on the scheme under its 2017 contract. Swept at 9 and 36."
+  },
+  {
+   "input": "Cost of one van stop",
+   "value": 10,
+   "status": "assumed",
+   "source": "A van and two staff at about 50 an hour calling at five stops an hour. No UK operator figure found. Swept from 3 to 50."
+  },
+  {
+   "input": "Cost of a blocked return",
+   "value": 0.825,
+   "status": "assumed",
+   "source": "Half a lost trip. Swept at 0.25x, 1x and 2x a lost trip."
+  },
+  {
+   "input": "Cost of moving one bike",
+   "value": 0.4,
+   "status": "assumed",
+   "source": "About half a minute of handling at the same hourly cost."
+  },
+  {
+   "input": "Default start level",
+   "value": "half the docks",
+   "status": "assumed",
+   "source": "Dock occupancy history is not in the archive."
+  }
+ ]
+}

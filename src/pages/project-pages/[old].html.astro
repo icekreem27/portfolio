@@ -1,0 +1,23 @@
+---
+// Old site URLs (/project-pages/*.html) forward to their new pages.
+import { oldUrls } from '../../data/redirects';
+
+export function getStaticPaths() {
+  return Object.entries(oldUrls).map(([old, to]) => ({ params: { old }, props: { to } }));
+}
+const { to } = Astro.props;
+const target = new URL(to, Astro.site).href;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Moved · Karim Abbas</title>
+    <meta http-equiv="refresh" content={`0; url=${to}`} />
+    <link rel="canonical" href={target} />
+    <meta name="robots" content="noindex" />
+  </head>
+  <body>
+    <p>This page has moved to <a href={to}>{target}</a>.</p>
+  </body>
+</html>

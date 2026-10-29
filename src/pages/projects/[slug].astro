@@ -1,0 +1,110 @@
+---
+import Base from '../../layouts/Base.astro';
+import { projects } from '../../data/projects';
+import { site } from '../../data/site';
+import Figure from '../../components/cycle/Figure.astro';
+
+export function getStaticPaths() {
+  return projects.map((project, i) => ({
+    params: { slug: project.slug },
+    props: { project, next: projects[(i + 1) % projects.length] },
+  }));
+}
+const { project: p, next } = Astro.props;
+const author = { '@type': 'Person', name: 'Karim Abbas', url: 'https://karimabbas.com/' };
+const ld =
+  p.slug === 'armadillo'
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'ScholarlyArticle',
+        headline: 'Midline-Constrained Loss in the Anatomical Landmark Segmentation of 3D Liver Models',
+        author: { '@type': 'Person', name: 'Abdul Karim Abbas' },
+        datePublished: '2025',
+        url: 'https://doi.org/10.1007/978-3-031-98691-8_16',
+        isPartOf: { '@type': 'Event', name: 'Medical Image Understanding and Analysis (MIUA) 2025' },
+      }
+    : p.slug === 'lapbylap'
+      ? {
+          '@context': 'https://schema.org',
+          '@type': 'SoftwareApplication',
+          name: 'LapByLap',
+          url: 'https://lapbylap.karimabbas.com',
+          applicationCategory: 'WebApplication',
+          operatingSystem: 'Any',
+          description: p.summary,
+          author,
+        }
+      : undefined;
+const toc = [...p.sections.map((s) => ({ id: s.id, title: s.title })), { id: 'limits', title: 'Caveats' }];
+---
+<Base title={`${p.seoTitle ?? p.title} · ${site.name}`} description={p.summary} current="work" type="article" ld={ld}>
+  <div class="wrap">
+    <div class="crumb rise">
+      <a class="tlink" href="/#work">← All work</a>
+      <span>{p.year}</span><span>{p.kind}</span>
+    </div>
+    <h1 class="p-title rise">{p.title}</h1>
+    <p class="p-lead rise">{p.lead}</p>
+    <div class="p-meta rise">
+      <ul class="tags p-stack">{p.stack.map((s) => <li>{s}</li>)}</ul>
+    </div>
+    <div class="plinks rise">
+      {p.links.map((l, i) => (
+        <a class={i === 0 ? 'btn' : 'btn ghost'} href={l.href}>
+          {l.label}
+        </a>
+      ))}
+    </div>
+
+    {p.kpis.length > 0 && (
+      <div class="measured rise">
+        <span class="label">Results</span>
+        <div class={`kpis ${p.kpis.length === 3 ? 'three' : ''}`}>
+          {p.kpis.map((k) => (
+            <div class="kpi"><div class="kpi-v">{k.value}</div><div class="kpi-l">{k.label}</div></div>
+          ))}
+        </div>
+      </div>
+    )}
+
+    <div class="p-body">
+      <nav class="toc" aria-label="On this page">
+        <ol>{toc.map((t) => <li><a href={`#${t.id}`}>{t.title}</a></li>)}</ol>
+      </nav>
+      <div class="prose">
+        {p.sections.map((s) => (
+          <section id={s.id} class="rise">
+            <h2>{s.title}</h2>
+            {s.paras?.map((t) => <p>{t}</p>)}
+            {s.items && <ul class="defs">{s.items.map((i) => <li><b>{i.lead}</b> {i.text}</li>)}</ul>}
+            {s.table && (
+              <div class="tablewrap">
+                <table class="cmp">
+                  <thead><tr>{s.table.head.map((h) => <th>{h}</th>)}</tr></thead>
+                  <tbody>{s.table.rows.map((r, i) => <tr class={i === s.table!.highlight ? 'hl' : ''}>{r.map((c) => <td>{c}</td>)}</tr>)}</tbody>
+                </table>
+              </div>
+            )}
+            {s.figures?.map((f) => <Figure {...f} />)}
+            {s.after?.map((t) => <p>{t}</p>)}
+          </section>
+        ))}
+        <section id="limits" class="limits rise">
+          <h2>Caveats</h2>
+          <ul>{p.limits.map((l) => <li>{l}</li>)}</ul>
+        </section>
+        {p.credits && (
+          <section class="credits rise">
+            <h2>Data and credits</h2>
+            <ul>{p.credits.map((c) => <li><a class="tlink" href={c.href}>{c.text}</a></li>)}</ul>
+            <p class="muted">Derived results only. The raw TfL journey files are not republished.</p>
+          </section>
+        )}
+        <a class="next" href={`/projects/${next.slug}`}>
+          <span class="label">Next project</span>
+          <b>{next.title} →</b>
+        </a>
+      </div>
+    </div>
+  </div>
+</Base>

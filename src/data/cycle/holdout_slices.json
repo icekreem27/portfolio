@@ -1,0 +1,119 @@
+{
+ "meta": {
+  "title": "Spring 2026 holdout: where the errors are",
+  "caption": "Strike hours are 21 to 24 April 2026 (Tube drivers). The count model's gain over the baseline is larger on strike and bank-holiday hours than on normal ones.",
+  "source_table": "data/processed/holdout_slices.parquet"
+ },
+ "slices": [
+  {
+   "slice": "normal days",
+   "baseline": {
+    "mean_pinball": 0.4633724378435749,
+    "mae": 1.3848285783800367,
+    "inside_80_band": 0.7753588693895254,
+    "hours": 94533
+   },
+   "lightgbm": {
+    "mean_pinball": 0.40817254283905763,
+    "mae": 1.2922353177647041,
+    "inside_80_band": 0.8665228015613595,
+    "hours": 94533
+   },
+   "count": {
+    "mean_pinball": 0.3901099792312384,
+    "mae": 1.222261009382967,
+    "inside_80_band": 0.9147916600552188,
+    "hours": 94533
+   },
+   "count_gain_over_baseline": 0.15810707031536564
+  },
+  {
+   "slice": "strike hours",
+   "baseline": {
+    "mean_pinball": 0.5922465277777778,
+    "mae": 1.7634765625,
+    "inside_80_band": 0.7279947916666667,
+    "hours": 7680
+   },
+   "lightgbm": {
+    "mean_pinball": 0.45609719420211847,
+    "mae": 1.4402430560737796,
+    "inside_80_band": 0.8713541666666667,
+    "hours": 7680
+   },
+   "count": {
+    "mean_pinball": 0.4346440972222222,
+    "mae": 1.3494791666666666,
+    "inside_80_band": 0.904296875,
+    "hours": 7680
+   },
+   "count_gain_over_baseline": 0.2661095053556667
+  },
+  {
+   "slice": "bank-holiday hours",
+   "baseline": {
+    "mean_pinball": 0.742051282051282,
+    "mae": 2.1277884615384615,
+    "inside_80_band": 0.6873076923076923,
+    "hours": 5200
+   },
+   "lightgbm": {
+    "mean_pinball": 0.5341020105270101,
+    "mae": 1.6751865615906882,
+    "inside_80_band": 0.8332692307692308,
+    "hours": 5200
+   },
+   "count": {
+    "mean_pinball": 0.5014935897435897,
+    "mae": 1.5165384615384616,
+    "inside_80_band": 0.8719230769230769,
+    "hours": 5200
+   },
+   "count_gain_over_baseline": 0.3241793365583967
+  },
+  {
+   "slice": "morning docks",
+   "baseline": {
+    "mean_pinball": 0.4260287078373015,
+    "mae": 1.2904761904761906,
+    "inside_80_band": 0.7776041666666667,
+    "hours": 53760
+   },
+   "lightgbm": {
+    "mean_pinball": 0.36021728835007083,
+    "mae": 1.1343883842466203,
+    "inside_80_band": 0.8713355654761905,
+    "hours": 53760
+   },
+   "count": {
+    "mean_pinball": 0.34047185019841264,
+    "mae": 1.064546130952381,
+    "inside_80_band": 0.9295386904761904,
+    "hours": 53760
+   },
+   "count_gain_over_baseline": 0.20082416059051744
+  },
+  {
+   "slice": "weekend docks",
+   "baseline": {
+    "mean_pinball": 0.5462472430867488,
+    "mae": 1.605576575401189,
+    "inside_80_band": 0.7577954634410005,
+    "hours": 53653
+   },
+   "lightgbm": {
+    "mean_pinball": 0.4752884363729436,
+    "mae": 1.5086984613734675,
+    "inside_80_band": 0.8591691051758522,
+    "hours": 53653
+   },
+   "count": {
+    "mean_pinball": 0.4570170043302952,
+    "mae": 1.4270217881572327,
+    "inside_80_band": 0.8943581905951205,
+    "hours": 53653
+   },
+   "count_gain_over_baseline": 0.16335137593048332
+  }
+ ]
+}

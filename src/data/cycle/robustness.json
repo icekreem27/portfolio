@@ -1,0 +1,317 @@
+{
+ "meta": {
+  "title": "Does the result survive picking the docks without hindsight?",
+  "caption": "The original 80 docks were chosen with the whole two years in view. Here 80 are chosen by the same rules from 1 Jun to 14 Dec 2024 only, and scored on the six folds that start after that. The spring 2026 test is not used.",
+  "source_tables": [
+   "data/processed/early_leaderboard.parquet",
+   "data/processed/early_comparison_original.parquet",
+   "data/processed/early_decision.parquet"
+  ]
+ },
+ "pick_window": "1 Jun 2024 to 14 Dec 2024",
+ "scored_folds": "Christmas 2024 to Christmas 2025 (six windows of 28 mornings)",
+ "docks_in_common": {
+  "total": 65,
+  "of": 80,
+  "morning": 32,
+  "weekend": 33
+ },
+ "original_80": {
+  "station_hours_scored": 314225,
+  "rungs": [
+   {
+    "id": "naive",
+    "name": "Same hour last week",
+    "departures_mae": 1.5088169305434005,
+    "mean_pinball": 0.7544084652717002,
+    "wis_80": 1.5088169305434005,
+    "inside_80_band": 0.42317447688758053,
+    "returns_mae": 1.4431506086403054,
+    "mean_pinball_by_volume": {
+     "quiet": 0.5242831955195595,
+     "middle": 0.6387859468656191,
+     "busy": 1.0965579111383918
+    }
+   },
+   {
+    "id": "baseline",
+    "name": "Last 8 weeks, quantiles",
+    "departures_mae": 1.2787938579043678,
+    "mean_pinball": 0.42687038480918665,
+    "wis_80": 0.8537407696183733,
+    "inside_80_band": 0.7915315458668152,
+    "returns_mae": 1.2056360887898798,
+    "mean_pinball_by_volume": {
+     "quiet": 0.295112938151944,
+     "middle": 0.36114430244420753,
+     "busy": 0.6223098981695704
+    }
+   },
+   {
+    "id": "arima",
+    "name": "Weekly ARIMA",
+    "departures_mae": 1.5103713798151583,
+    "mean_pinball": 0.52015983737625,
+    "wis_80": 1.0403196747525,
+    "inside_80_band": 0.8671302410692975,
+    "returns_mae": 1.444480493239524,
+    "mean_pinball_by_volume": {
+     "quiet": 0.3534456400299943,
+     "middle": 0.42573782425871554,
+     "busy": 0.7783242393240132
+    }
+   },
+   {
+    "id": "lightgbm",
+    "name": "LightGBM quantile",
+    "departures_mae": 1.1479529107259323,
+    "mean_pinball": 0.3648338301209689,
+    "wis_80": 0.7296676602419379,
+    "inside_80_band": 0.8682504574747394,
+    "returns_mae": 1.0976856077328248,
+    "mean_pinball_by_volume": {
+     "quiet": 0.24976948379122316,
+     "middle": 0.3040738754444845,
+     "busy": 0.5387579950096656
+    }
+   },
+   {
+    "id": "count",
+    "name": "Count model",
+    "departures_mae": 1.0872877715013127,
+    "mean_pinball": 0.34861092104914204,
+    "wis_80": 0.6972218420982841,
+    "inside_80_band": 0.9241753520566474,
+    "returns_mae": 1.0467435754634418,
+    "mean_pinball_by_volume": {
+     "quiet": 0.24077747711222786,
+     "middle": 0.2937677432392351,
+     "busy": 0.509578670695815
+    }
+   }
+  ],
+  "mean_pinball_minus_baseline": [
+   {
+    "id": "naive",
+    "name": "Same hour last week",
+    "gap": 0.3275380804625136,
+    "lo": 0.30687107868604807,
+    "hi": 0.34547570381134207
+   },
+   {
+    "id": "arima",
+    "name": "Weekly ARIMA",
+    "gap": 0.09328945256706342,
+    "lo": 0.0792908939324905,
+    "hi": 0.10757455630544158
+   },
+   {
+    "id": "lightgbm",
+    "name": "LightGBM quantile",
+    "gap": -0.06203655468821775,
+    "lo": -0.07222848817006254,
+    "hi": -0.05105556775884563
+   },
+   {
+    "id": "count",
+    "name": "Count model",
+    "gap": -0.07825946376004456,
+    "lo": -0.0870044089930036,
+    "hi": -0.06865958466340656
+   }
+  ],
+  "count_minus_lightgbm": {
+   "gap": -0.016222909071826823,
+   "lo": -0.019884239829917466,
+   "hi": -0.012246531520903619
+  },
+  "relative_gain_over_baseline": 0.1833330831676857
+ },
+ "repicked_80": {
+  "station_hours_scored": 313927,
+  "rungs": [
+   {
+    "id": "naive",
+    "name": "Same hour last week",
+    "departures_mae": 1.5048817081678225,
+    "mean_pinball": 0.7524408540839113,
+    "wis_80": 1.5048817081678225,
+    "inside_80_band": 0.4297687041891905,
+    "returns_mae": 1.4452659376224408,
+    "mean_pinball_by_volume": {
+     "quiet": 0.5269559469285613,
+     "middle": 0.61787109470613,
+     "busy": 1.1077199112328249
+    }
+   },
+   {
+    "id": "baseline",
+    "name": "Last 8 weeks, quantiles",
+    "departures_mae": 1.271270072341659,
+    "mean_pinball": 0.4247038748923582,
+    "wis_80": 0.8494077497847164,
+    "inside_80_band": 0.7954906713981276,
+    "returns_mae": 1.2061769137410927,
+    "mean_pinball_by_volume": {
+     "quiet": 0.2958435872011584,
+     "middle": 0.34963281344338154,
+     "busy": 0.6259711034515321
+    }
+   },
+   {
+    "id": "arima",
+    "name": "Weekly ARIMA",
+    "departures_mae": 1.505953673975625,
+    "mean_pinball": 0.5205956993897802,
+    "wis_80": 1.0411913987795605,
+    "inside_80_band": 0.8692116320036187,
+    "returns_mae": 1.4468289423832212,
+    "mean_pinball_by_volume": {
+     "quiet": 0.3564147698688562,
+     "middle": 0.41351753790776924,
+     "busy": 0.7880548023777062
+    }
+   },
+   {
+    "id": "lightgbm",
+    "name": "LightGBM quantile",
+    "departures_mae": 1.140820051952294,
+    "mean_pinball": 0.36344442800503324,
+    "wis_80": 0.7268888560100666,
+    "inside_80_band": 0.8713618134152208,
+    "returns_mae": 1.099618184623784,
+    "mean_pinball_by_volume": {
+     "quiet": 0.2506929891549786,
+     "middle": 0.29460762435382737,
+     "busy": 0.5425897911624037
+    }
+   },
+   {
+    "id": "count",
+    "name": "Count model",
+    "departures_mae": 1.0831881297244264,
+    "mean_pinball": 0.3481993159768566,
+    "wis_80": 0.6963986319537132,
+    "inside_80_band": 0.9252660650405986,
+    "returns_mae": 1.0460011403925116,
+    "mean_pinball_by_volume": {
+     "quiet": 0.24280497977556384,
+     "middle": 0.2850547140931624,
+     "busy": 0.5144973794796732
+    }
+   }
+  ],
+  "mean_pinball_minus_baseline": [
+   {
+    "id": "naive",
+    "name": "Same hour last week",
+    "gap": 0.3277369791915531,
+    "lo": 0.30711367476972573,
+    "hi": 0.34569321551973264
+   },
+   {
+    "id": "arima",
+    "name": "Weekly ARIMA",
+    "gap": 0.09589182449742206,
+    "lo": 0.08177945699731622,
+    "hi": 0.11006972530455814
+   },
+   {
+    "id": "lightgbm",
+    "name": "LightGBM quantile",
+    "gap": -0.06125944688732493,
+    "lo": -0.07123406073688911,
+    "hi": -0.05054138785360876
+   },
+   {
+    "id": "count",
+    "name": "Count model",
+    "gap": -0.07650455891550159,
+    "lo": -0.0850501177039226,
+    "hi": -0.0672723261264622
+   }
+  ],
+  "count_minus_lightgbm": {
+   "gap": -0.015245112028176652,
+   "lo": -0.018989822436177695,
+   "hi": -0.011060734029616838
+  },
+  "relative_gain_over_baseline": 0.1801362394795475
+ },
+ "decision_repicked_base_case": {
+  "inputs": {
+   "lost_trip": 1.65,
+   "blocked_return": 0.825,
+   "van_stop": 10.0,
+   "van_load_bikes": 18,
+   "dock_scale": 1.0
+  },
+  "policies": {
+   "no rebalancing": {
+    "cost_per_window": 5.272252810277586,
+    "lost_trips": 3.04664678443068,
+    "blocked_returns": 0.2973158981417756,
+    "van_stops_per_100_windows": 0.0,
+    "share_of_avoidable_cost_removed": 0.0
+   },
+   "last week as certain": {
+    "cost_per_window": 5.30747495602967,
+    "lost_trips": 2.4878030129234534,
+    "blocked_returns": 0.31566873136040374,
+    "van_stops_per_100_windows": 6.079376003670567,
+    "share_of_avoidable_cost_removed": -0.07989592367736235
+   },
+   "model mean as certain": {
+    "cost_per_window": 5.060870230175117,
+    "lost_trips": 2.513038158599067,
+    "blocked_returns": 0.3054217328133364,
+    "van_stops_per_100_windows": 4.075858377303663,
+    "share_of_avoidable_cost_removed": 0.47948829141370203
+   },
+   "quantile (full forecast)": {
+    "cost_per_window": 5.050772348397951,
+    "lost_trips": 2.5752083811271698,
+    "blocked_returns": 0.30083352450867934,
+    "van_stops_per_100_windows": 3.2882159516708724,
+    "share_of_avoidable_cost_removed": 0.5023937554206404
+   },
+   "quantile (joint forecast)": {
+    "cost_per_window": 5.046228110422879,
+    "lost_trips": 2.5715378144834444,
+    "blocked_returns": 0.301368815477556,
+    "van_stops_per_100_windows": 3.295862965511968,
+    "share_of_avoidable_cost_removed": 0.5127016478751093
+   },
+   "oracle": {
+    "cost_per_window": 4.831402462338456,
+    "lost_trips": 2.2076164257857305,
+    "blocked_returns": 0.2973158981417756,
+    "van_stops_per_100_windows": 6.079376003670567,
+    "share_of_avoidable_cost_removed": 1.0
+   }
+  },
+  "gaps_95pct": {
+   "quantile (full forecast) minus model mean as certain": {
+    "mean": -0.010097881777166022,
+    "lo": -0.021086043763953587,
+    "hi": 0.0002969244779394964
+   },
+   "quantile (full forecast) minus last week as certain": {
+    "mean": -0.25670260763171976,
+    "lo": -0.3077609585745035,
+    "hi": -0.2052467040874517
+   },
+   "quantile (joint forecast) minus model mean as certain": {
+    "mean": -0.014642119752236758,
+    "lo": -0.024530188870131607,
+    "hi": -0.004895469164408559
+   },
+   "quantile (joint forecast) minus quantile (full forecast)": {
+    "mean": -0.0045442379750707355,
+    "lo": -0.01253128760831194,
+    "hi": 0.0028610648668164194
+   }
+  },
+  "n_windows": 13077
+ }
+}

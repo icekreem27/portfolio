@@ -1,0 +1,118 @@
+---
+import Base from '../layouts/Base.astro';
+import { site, hero, publications, about, personLd } from '../data/site';
+import { projects, lenses } from '../data/projects';
+const featured = projects.filter((p) => p.featured);
+const rest = projects.filter((p) => !p.featured).sort((a, b) => Number(b.year) - Number(a.year));
+---
+<Base
+  current="work"
+  title="Karim Abbas · Data & AI engineer"
+  description="Karim Abbas is a Data & AI engineer (MEng, University of Leeds). Projects in machine learning, LLM applications, forecasting and data products, with write-ups and results."
+  ld={personLd}
+>
+  <section class="hero wrap">
+    <p class="label rise">{hero.eyebrow}</p>
+    <h1 class="rise">{hero.title}</h1>
+    <p class="lead rise">{hero.lead}</p>
+    <div class="actions rise">
+      <a class="btn" href="#work">View projects</a>
+      <a class="btn ghost" href={site.links.cv}>CV</a>
+      <a class="btn ghost" href={site.links.email}>Email me</a>
+      <a class="btn ghost" href={site.links.github}>GitHub</a>
+      <a class="btn ghost" href={site.links.linkedin}>LinkedIn</a>
+    </div>
+  </section>
+
+  <section class="section wrap about-top" id="about">
+    <div class="sec-head"><h2>About</h2></div>
+    <div class="about">
+      <p class="muted">MEng Computer Science with AI, University of Leeds.</p>
+      <div>{about.map((t) => <p>{t}</p>)}</div>
+    </div>
+  </section>
+
+  <section class="section wrap" id="work">
+    <div class="sec-head"><h2>Selected projects</h2></div>
+    {featured.map((p) => (
+      <a class="feature rise" href={`/projects/${p.slug}`}>
+        <div>
+          <span class="label">{p.category} · {p.year}</span>
+          <h3>{p.title}</h3>
+          <p>{p.summary}</p>
+          <ul class="tags">{p.stack.slice(0, 5).map((s) => <li>{s}</li>)}</ul>
+          <span class="more">Read the write-up <i>→</i></span>
+        </div>
+        {p.metrics && (
+          <div class="fmetric">
+            {p.metrics.map((m) => <div class="fm"><b>{m.value}</b><span>{m.label}</span></div>)}
+          </div>
+        )}
+      </a>
+    ))}
+  </section>
+
+  <section class="section wrap work" id="more" data-lens="all">
+    <div class="sec-head">
+      <h2>More projects</h2>
+      <span class="label work-count" aria-live="polite" data-count>{rest.length} of {rest.length} shown</span>
+    </div>
+    <div class="lens" role="group" aria-label="Filter projects">
+      <div class="chips">
+        <button type="button" data-lens-btn="all" aria-pressed="true">All</button>
+        {lenses.map((l) => <button type="button" data-lens-btn={l.id} aria-pressed="false">{l.label}</button>)}
+      </div>
+    </div>
+    <div class="worklist">
+      {rest.map((p) => (
+        <a class="row rise" data-lenses={p.lenses.join(' ')} href={`/projects/${p.slug}`}>
+          <div class="row-t"><b>{p.title}</b><span class="label">{p.year} · {p.kind}</span></div>
+          <span class="muted">{p.summary}</span>
+          <span class="row-go">→</span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="section wrap" id="research">
+    <div class="sec-head"><h2>Publications</h2><span class="label">MIUA 2025</span></div>
+    <div class="pubs">
+      {publications.map((p) => (
+        <a class="row rise" href={p.href}>
+          <div>
+            <div class="pub-t">{p.title}</div>
+            <div class="pub-m">{p.authors} · {p.venue} · {p.role}</div>
+          </div>
+          <span class="row-go">↗</span>
+        </a>
+      ))}
+    </div>
+  </section>
+</Base>
+
+<script>
+  const root = document.querySelector<HTMLElement>('.work');
+  if (root) {
+    const btns = [...root.querySelectorAll<HTMLButtonElement>('[data-lens-btn]')];
+    const items = [...root.querySelectorAll<HTMLElement>('[data-lenses]')];
+    const count = root.querySelector<HTMLElement>('[data-count]')!;
+    const valid = btns.map((b) => b.dataset.lensBtn!);
+    const apply = (lens: string, push = true) => {
+      root.classList.add('snap');
+      root.dataset.lens = lens;
+      btns.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.lensBtn === lens)));
+      const n = lens === 'all' ? items.length : items.filter((i) => i.dataset.lenses!.split(' ').includes(lens)).length;
+      count.textContent = `${n} of ${items.length} shown`;
+      if (push) {
+        try {
+          const u = new URL(location.href);
+          lens === 'all' ? u.searchParams.delete('lens') : u.searchParams.set('lens', lens);
+          history.replaceState(null, '', u);
+        } catch {}
+      }
+    };
+    btns.forEach((b) => b.addEventListener('click', () => apply(b.dataset.lensBtn!)));
+    const q = new URLSearchParams(location.search).get('lens');
+    if (q && valid.includes(q)) apply(q, false);
+  }
+</script>
