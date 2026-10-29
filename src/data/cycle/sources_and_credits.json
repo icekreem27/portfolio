@@ -1,0 +1,60 @@
+{
+ "meta": {
+  "note": "TfL's Transport Data Service terms, section Requirements, ask for these statements. The Geomni line is printed on TfL's page with its year in square brackets, [2019]; check it against the page before publishing.",
+  "terms": "https://tfl.gov.uk/corporate/terms-and-conditions/transport-data-service"
+ },
+ "credits": [
+  {
+   "text": "Powered by TfL Open Data",
+   "link": "https://tfl.gov.uk/corporate/terms-and-conditions/transport-data-service",
+   "needed": "licence requirement"
+  },
+  {
+   "text": "Contains OS data © Crown copyright and database rights 2016",
+   "link": "https://tfl.gov.uk/corporate/terms-and-conditions/transport-data-service",
+   "needed": "licence requirement, quoted from the TfL terms"
+  },
+  {
+   "text": "Geomni UK Map data © and database rights [2019]",
+   "link": "https://tfl.gov.uk/corporate/terms-and-conditions/transport-data-service",
+   "needed": "licence requirement, quoted from the TfL terms; verify the year"
+  },
+  {
+   "text": "Weather data by Open-Meteo.com",
+   "link": "https://open-meteo.com/",
+   "needed": "ECMWF data on that API is CC BY; free API is for non-commercial use"
+  },
+  {
+   "text": "School term dates from Housemait, CC BY 4.0",
+   "link": "https://housemait.com/school-term-dates/data",
+   "needed": "licence requirement"
+  }
+ ],
+ "sources": [
+  {
+   "name": "TfL Santander Cycles journey data",
+   "use": "Hourly departures and returns per dock",
+   "link": "https://cycling.data.tfl.gov.uk/"
+  },
+  {
+   "name": "TfL BikePoint listing",
+   "use": "Docks per station",
+   "link": "https://api.tfl.gov.uk/BikePoint"
+  },
+  {
+   "name": "Open-Meteo Single Runs, ecmwf_ifs",
+   "use": "Temperature and rain as forecast that morning",
+   "link": "https://open-meteo.com/"
+  },
+  {
+   "name": "GOV.UK bank holidays",
+   "use": "England and Wales bank holidays",
+   "link": "https://www.gov.uk/bank-holidays.json"
+  },
+  {
+   "name": "TfL FOI response on Tube strikes",
+   "use": "Strike dates",
+   "link": "https://tfl.gov.uk/"
+  }
+ ]
+}

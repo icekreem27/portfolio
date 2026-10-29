@@ -1,0 +1,138 @@
+{
+ "meta": {
+  "title": "The data problems, and what was done about each",
+  "source_tables": [
+   "data/processed/outages.parquet",
+   "data/processed/dock_flags.parquet"
+  ]
+ },
+ "scale": {
+  "trips": 18111450,
+  "station_hours": 14561208,
+  "journey_files": 48,
+  "period": "1 Jun 2024 to 31 May 2026",
+  "stations_in_slice": 80
+ },
+ "network_outage": {
+  "date": "2025-08-05",
+  "trips_that_day": 188.0,
+  "typical_same_weekday": 30661.5,
+  "ratio": 0.006131467801640493,
+  "action": "Missing, not zero, for every feature and fit; the day and the days that read it are out of every score."
+ },
+ "closed_docks": {
+  "definition": "A day or more with no departures and no returns at a dock that normally logs at least 30 trips over that stretch.",
+  "total_station_hours": 2016,
+  "largest_runs": [
+   {
+    "station": "All Saints Church, Portobello",
+    "id": "300023",
+    "hours": 470
+   },
+   {
+    "station": "Triangle Car Park, Hyde Park",
+    "id": "001088",
+    "hours": 236
+   },
+   {
+    "station": "Turquoise Island, Notting Hill",
+    "id": "002682",
+    "hours": 131
+   },
+   {
+    "station": "Black Lion Gate, Kensington Gardens",
+    "id": "001157",
+    "hours": 128
+   },
+   {
+    "station": "Queen's Gate, Kensington Gardens",
+    "id": "001231",
+    "hours": 103
+   },
+   {
+    "station": "Westminster Pier, Westminster",
+    "id": "300249",
+    "hours": 98
+   },
+   {
+    "station": "Frith Street, Soho",
+    "id": "002660",
+    "hours": 85
+   },
+   {
+    "station": "Serpentine Car Park, Hyde Park",
+    "id": "001217",
+    "hours": 82
+   }
+  ],
+  "events_that_line_up": [
+   "Hyde Park docks, late Nov to early Dec 2024",
+   "Notting Hill Carnival weekends, Aug 2024 and Aug 2025",
+   "New Year at Waterloo and Westminster Pier"
+  ],
+  "action": "Missing, not zero, for the model fits and out of every score."
+ },
+ "suspect_empty_hours": {
+  "definition": "No departures in an hour whose same hour averaged six or more over the four weeks either side. A true zero at that mean has a 0.25% chance.",
+  "share_of_scored_hours": 0.0027,
+  "most_flagged": [
+   {
+    "station": "Hyde Park Corner, Hyde Park",
+    "id": "001075",
+    "hours": 183
+   },
+   {
+    "station": "Waterloo Station 2, Waterloo",
+    "id": "002692",
+    "hours": 161
+   },
+   {
+    "station": "Albert Gate, Hyde Park",
+    "id": "001132",
+    "hours": 130
+   },
+   {
+    "station": "Wellington Arch, Hyde Park",
+    "id": "001109",
+    "hours": 128
+   },
+   {
+    "station": "Triangle Car Park, Hyde Park",
+    "id": "001088",
+    "hours": 128
+   },
+   {
+    "station": "Black Lion Gate, Kensington Gardens",
+    "id": "001157",
+    "hours": 120
+   },
+   {
+    "station": "Park Lane , Hyde Park",
+    "id": "001037",
+    "hours": 110
+   },
+   {
+    "station": "Waterloo Station 3, Waterloo",
+    "id": "001072",
+    "hours": 107
+   },
+   {
+    "station": "Westminster Pier, Westminster",
+    "id": "300249",
+    "hours": 105
+   },
+   {
+    "station": "Serpentine Car Park, Hyde Park",
+    "id": "001217",
+    "hours": 84
+   }
+  ],
+  "effect": "Setting them aside moves the count model's mean pinball from 0.375 to 0.371. It is a floor: a dock empty for 20 minutes still logs trips."
+ },
+ "other": [
+  "Trips taken are not trips wanted. An empty dock records no demand, and the archive has no dock availability.",
+  "School terms for 2024/25 are not on the live council lists, so they were compiled by hand from five borough calendars. The flag turned out to add nothing.",
+  "Station numbers are not fixed places and some files lose leading zeros. Numbers are padded and matched by name.",
+  "Forecast weather is the ECMWF run Open-Meteo stored for that morning, not what actually happened. Four mornings in August 2025 are missing."
+ ]
+}

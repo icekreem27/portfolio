@@ -1,0 +1,506 @@
+{
+ "meta": {
+  "title": "A limited van: does the forecast's spread help choose the docks?",
+  "caption": "Each morning one van can make at most this many stops across the 80 docks. Each policy ranks the docks by what it thinks a visit would save, visits the top ones and is scored on what happened. Pounds are per morning across all 80 docks; doing nothing costs about 460 a morning. 'Van already paid for' means a stop costs only the handling, 0.4 a bike. Nine folds only.",
+  "families": {
+   "stop 10": "A stop costs 10 (the base case).",
+   "van paid for": "A stop costs only the handling."
+  },
+  "source_tables": [
+   "data/processed/decision_budget.parquet",
+   "data/processed/decision_budget_gaps.parquet"
+  ]
+ },
+ "scenarios": [
+  {
+   "scenario": "base stop cost 10, no limit",
+   "family": "stop 10",
+   "stops_per_morning_limit": null,
+   "policies": {
+    "no rebalancing": {
+     "pounds_saved_per_morning": 0.0,
+     "stops_per_morning": 0.0,
+     "share_of_avoidable_cost_removed": 0.0,
+     "cost_per_window": 5.796293817557329
+    },
+    "last week as certain": {
+     "pounds_saved_per_morning": 1.7007056451612474,
+     "stops_per_morning": 5.30241935483871,
+     "share_of_avoidable_cost_removed": 0.04335346267505991,
+     "cost_per_window": 5.774989897969492
+    },
+    "model mean as certain": {
+     "pounds_saved_per_morning": 19.83618951612904,
+     "stops_per_morning": 3.407258064516129,
+     "share_of_avoidable_cost_removed": 0.505653347038417,
+     "cost_per_window": 5.547815435902616
+    },
+    "quantile (full forecast)": {
+     "pounds_saved_per_morning": 21.279133064516145,
+     "stops_per_morning": 2.661290322580645,
+     "share_of_avoidable_cost_removed": 0.5424360786329181,
+     "cost_per_window": 5.529740377815941
+    },
+    "oracle": {
+     "pounds_saved_per_morning": 39.2288306451613,
+     "stops_per_morning": 5.5,
+     "share_of_avoidable_cost_removed": 1.0,
+     "cost_per_window": 5.304893171027376
+    }
+   },
+   "whole_forecast_minus": {
+    "model mean as certain": {
+     "pounds_per_morning": -1.4429435483870972,
+     "lo": -2.398860707490409,
+     "hi": -0.5858027245594182
+    },
+    "last week as certain": {
+     "pounds_per_morning": -19.57842741935484,
+     "lo": -23.070328268415622,
+     "hi": -16.395865059652138
+    }
+   }
+  },
+  {
+   "scenario": "base stop cost 10, 1 stop a morning",
+   "family": "stop 10",
+   "stops_per_morning_limit": 1,
+   "policies": {
+    "no rebalancing": {
+     "pounds_saved_per_morning": 0.0,
+     "stops_per_morning": 0.0,
+     "share_of_avoidable_cost_removed": 0.0,
+     "cost_per_window": 5.796293817557329
+    },
+    "last week as certain": {
+     "pounds_saved_per_morning": 4.999294354838615,
+     "stops_per_morning": 0.8508064516129032,
+     "share_of_avoidable_cost_removed": 0.5022075949367,
+     "cost_per_window": 5.733670067683605
+    },
+    "model mean as certain": {
+     "pounds_saved_per_morning": 6.0831653225806415,
+     "stops_per_morning": 0.875,
+     "share_of_avoidable_cost_removed": 0.6110886075949371,
+     "cost_per_window": 5.720092938680675
+    },
+    "quantile (full forecast)": {
+     "pounds_saved_per_morning": 7.0687500000000405,
+     "stops_per_morning": 0.7620967741935484,
+     "share_of_avoidable_cost_removed": 0.7100962025316505,
+     "cost_per_window": 5.707746994645923
+    },
+    "oracle": {
+     "pounds_saved_per_morning": 9.954637096774182,
+     "stops_per_morning": 0.8508064516129032,
+     "share_of_avoidable_cost_removed": 1.0,
+     "cost_per_window": 5.671596878472573
+    }
+   },
+   "whole_forecast_minus": {
+    "model mean as certain": {
+     "pounds_per_morning": -0.9855846774193562,
+     "lo": -1.7782213609046698,
+     "hi": -0.2972178742005754
+    },
+    "last week as certain": {
+     "pounds_per_morning": -2.0694556451612907,
+     "lo": -3.0796390536002747,
+     "hi": -1.1081943457070527
+    }
+   }
+  },
+  {
+   "scenario": "base stop cost 10, 2 stops a morning",
+   "family": "stop 10",
+   "stops_per_morning_limit": 2,
+   "policies": {
+    "no rebalancing": {
+     "pounds_saved_per_morning": 0.0,
+     "stops_per_morning": 0.0,
+     "share_of_avoidable_cost_removed": 0.0,
+     "cost_per_window": 5.796293817557329
+    },
+    "last week as certain": {
+     "pounds_saved_per_morning": 7.394959677419321,
+     "stops_per_morning": 1.6290322580645162,
+     "share_of_avoidable_cost_removed": 0.40765768268963326,
+     "cost_per_window": 5.703660723305385
+    },
+    "model mean as certain": {
+     "pounds_saved_per_morning": 11.188608870967744,
+     "stops_per_morning": 1.6169354838709677,
+     "share_of_avoidable_cost_removed": 0.6167879966657392,
+     "cost_per_window": 5.656139509041317
+    },
+    "quantile (full forecast)": {
+     "pounds_saved_per_morning": 12.643346774193603,
+     "stops_per_morning": 1.3911290322580645,
+     "share_of_avoidable_cost_removed": 0.6969824951375396,
+     "cost_per_window": 5.63791670875846
+    },
+    "oracle": {
+     "pounds_saved_per_morning": 18.140120967741975,
+     "stops_per_morning": 1.6290322580645162,
+     "share_of_avoidable_cost_removed": 1.0,
+     "cost_per_window": 5.569061268815031
+    }
+   },
+   "whole_forecast_minus": {
+    "model mean as certain": {
+     "pounds_per_morning": -1.4547379032258037,
+     "lo": -2.4005304764472246,
+     "hi": -0.5921997242842316
+    },
+    "last week as certain": {
+     "pounds_per_morning": -5.248387096774191,
+     "lo": -6.8085733377057265,
+     "hi": -3.7372261664213506
+    }
+   }
+  },
+  {
+   "scenario": "base stop cost 10, 3 stops a morning",
+   "family": "stop 10",
+   "stops_per_morning_limit": 3,
+   "policies": {
+    "no rebalancing": {
+     "pounds_saved_per_morning": 0.0,
+     "stops_per_morning": 0.0,
+     "share_of_avoidable_cost_removed": 0.0,
+     "cost_per_window": 5.796293817557329
+    },
+    "last week as certain": {
+     "pounds_saved_per_morning": 10.617943548387123,
+     "stops_per_morning": 2.3306451612903225,
+     "share_of_avoidable_cost_removed": 0.4232670283303201,
+     "cost_per_window": 5.663287958379634
+    },
+    "model mean as certain": {
+     "pounds_saved_per_morning": 15.856250000000065,
+     "stops_per_morning": 2.278225806451613,
+     "share_of_avoidable_cost_removed": 0.6320835844886499,
+     "cost_per_window": 5.597670219214061
+    },
+    "quantile (full forecast)": {
+     "pounds_saved_per_morning": 17.16784274193552,
+     "stops_per_morning": 1.9475806451612903,
+     "share_of_avoidable_cost_removed": 0.6843680932288535,
+     "cost_per_window": 5.581240529346398
+    },
+    "oracle": {
+     "pounds_saved_per_morning": 25.08568548387099,
+     "stops_per_morning": 2.318548387096774,
+     "share_of_avoidable_cost_removed": 1.0,
+     "cost_per_window": 5.482057531063743
+    }
+   },
+   "whole_forecast_minus": {
+    "model mean as certain": {
+     "pounds_per_morning": -1.3115927419354818,
+     "lo": -2.254938064041028,
+     "hi": -0.44666725470321783
+    },
+    "last week as certain": {
+     "pounds_per_morning": -6.5498991935483835,
+     "lo": -8.466738450374065,
+     "hi": -4.650665704186419
+    }
+   }
+  },
+  {
+   "scenario": "van already paid for, no limit",
+   "family": "van paid for",
+   "stops_per_morning_limit": null,
+   "policies": {
+    "no rebalancing": {
+     "pounds_saved_per_morning": 0.0,
+     "stops_per_morning": 0.0,
+     "share_of_avoidable_cost_removed": 0.0,
+     "cost_per_window": 5.796293817557329
+    },
+    "last week as certain": {
+     "pounds_saved_per_morning": 72.48971774193545,
+     "stops_per_morning": 22.193548387096776,
+     "share_of_avoidable_cost_removed": 0.4347598445476816,
+     "cost_per_window": 4.888250075765229
+    },
+    "model mean as certain": {
+     "pounds_saved_per_morning": 78.56673387096772,
+     "stops_per_morning": 14.72983870967742,
+     "share_of_avoidable_cost_removed": 0.4712069803604811,
+     "cost_per_window": 4.812126224871199
+    },
+    "quantile (full forecast)": {
+     "pounds_saved_per_morning": 97.15110887096776,
+     "stops_per_morning": 27.983870967741936,
+     "share_of_avoidable_cost_removed": 0.5826674776241045,
+     "cost_per_window": 4.579328720072734
+    },
+    "oracle": {
+     "pounds_saved_per_morning": 166.73508064516125,
+     "stops_per_morning": 22.197580645161292,
+     "share_of_avoidable_cost_removed": 1.0,
+     "cost_per_window": 3.7076838569552484
+    }
+   },
+   "whole_forecast_minus": {
+    "model mean as certain": {
+     "pounds_per_morning": -18.584374999999994,
+     "lo": -22.28531517064142,
+     "hi": -14.487658031312622
+    },
+    "last week as certain": {
+     "pounds_per_morning": -24.661391129032257,
+     "lo": -29.280892928230603,
+     "hi": -20.260162623958557
+    }
+   }
+  },
+  {
+   "scenario": "van already paid for, 2 stops a morning",
+   "family": "van paid for",
+   "stops_per_morning_limit": 2,
+   "policies": {
+    "no rebalancing": {
+     "pounds_saved_per_morning": 0.0,
+     "stops_per_morning": 0.0,
+     "share_of_avoidable_cost_removed": 0.0,
+     "cost_per_window": 5.796293817557329
+    },
+    "last week as certain": {
+     "pounds_saved_per_morning": 23.695362903225764,
+     "stops_per_morning": 1.8830645161290323,
+     "share_of_avoidable_cost_removed": 0.665643433419515,
+     "cost_per_window": 5.499473431659764
+    },
+    "model mean as certain": {
+     "pounds_saved_per_morning": 27.96774193548385,
+     "stops_per_morning": 1.842741935483871,
+     "share_of_avoidable_cost_removed": 0.7856618969271858,
+     "cost_per_window": 5.445955399535307
+    },
+    "quantile (full forecast)": {
+     "pounds_saved_per_morning": 28.73286290322579,
+     "stops_per_morning": 1.9637096774193548,
+     "share_of_avoidable_cost_removed": 0.8071554587700253,
+     "cost_per_window": 5.436371098090716
+    },
+    "oracle": {
+     "pounds_saved_per_morning": 35.59768145161285,
+     "stops_per_morning": 1.8870967741935485,
+     "share_of_avoidable_cost_removed": 1.0,
+     "cost_per_window": 5.3503788261440555
+    }
+   },
+   "whole_forecast_minus": {
+    "model mean as certain": {
+     "pounds_per_morning": -0.7651209677419337,
+     "lo": -1.612513465709085,
+     "hi": -0.010789179882197816
+    },
+    "last week as certain": {
+     "pounds_per_morning": -5.037499999999996,
+     "lo": -6.665334233743961,
+     "hi": -3.513404516613647
+    }
+   }
+  },
+  {
+   "scenario": "van already paid for, 4 stops a morning",
+   "family": "van paid for",
+   "stops_per_morning_limit": 4,
+   "policies": {
+    "no rebalancing": {
+     "pounds_saved_per_morning": 0.0,
+     "stops_per_morning": 0.0,
+     "share_of_avoidable_cost_removed": 0.0,
+     "cost_per_window": 5.796293817557329
+    },
+    "last week as certain": {
+     "pounds_saved_per_morning": 41.74465725806445,
+     "stops_per_morning": 3.6653225806451615,
+     "share_of_avoidable_cost_removed": 0.6586655765970091,
+     "cost_per_window": 5.2733786241034455
+    },
+    "model mean as certain": {
+     "pounds_saved_per_morning": 49.04667338709675,
+     "stops_per_morning": 3.564516129032258,
+     "share_of_avoidable_cost_removed": 0.7738800011452088,
+     "cost_per_window": 5.1819097888675625
+    },
+    "quantile (full forecast)": {
+     "pounds_saved_per_morning": 50.4266129032258,
+     "stops_per_morning": 3.8629032258064515,
+     "share_of_avoidable_cost_removed": 0.795653294226554,
+     "cost_per_window": 5.164623951914335
+    },
+    "oracle": {
+     "pounds_saved_per_morning": 63.377620967741954,
+     "stops_per_morning": 3.661290322580645,
+     "share_of_avoidable_cost_removed": 1.0,
+     "cost_per_window": 5.002392918476613
+    }
+   },
+   "whole_forecast_minus": {
+    "model mean as certain": {
+     "pounds_per_morning": -1.3799395161290322,
+     "lo": -2.0926237751264014,
+     "hi": -0.6605801634371632
+    },
+    "last week as certain": {
+     "pounds_per_morning": -8.681955645161288,
+     "lo": -11.243689033816015,
+     "hi": -6.315934575553448
+    }
+   }
+  },
+  {
+   "scenario": "van already paid for, 8 stops a morning",
+   "family": "van paid for",
+   "stops_per_morning_limit": 8,
+   "policies": {
+    "no rebalancing": {
+     "pounds_saved_per_morning": 0.0,
+     "stops_per_morning": 0.0,
+     "share_of_avoidable_cost_removed": 0.0,
+     "cost_per_window": 5.796293817557329
+    },
+    "last week as certain": {
+     "pounds_saved_per_morning": 53.05907258064514,
+     "stops_per_morning": 6.983870967741935,
+     "share_of_avoidable_cost_removed": 0.5468308297118352,
+     "cost_per_window": 5.1316483988281645
+    },
+    "model mean as certain": {
+     "pounds_saved_per_morning": 62.219455645161325,
+     "stops_per_morning": 6.326612903225806,
+     "share_of_avoidable_cost_removed": 0.6412384329362245,
+     "cost_per_window": 5.016900697040104
+    },
+    "quantile (full forecast)": {
+     "pounds_saved_per_morning": 66.1545362903226,
+     "stops_per_morning": 7.419354838709677,
+     "share_of_avoidable_cost_removed": 0.6817936727758568,
+     "cost_per_window": 4.967607839175674
+    },
+    "oracle": {
+     "pounds_saved_per_morning": 97.03014112903222,
+     "stops_per_morning": 6.94758064516129,
+     "share_of_avoidable_cost_removed": 1.0,
+     "cost_per_window": 4.580844024648955
+    }
+   },
+   "whole_forecast_minus": {
+    "model mean as certain": {
+     "pounds_per_morning": -3.9350806451612894,
+     "lo": -5.155829871138061,
+     "hi": -2.6859519124458093
+    },
+    "last week as certain": {
+     "pounds_per_morning": -13.095463709677416,
+     "lo": -16.45266685759465,
+     "hi": -10.09544251794425
+    }
+   }
+  },
+  {
+   "scenario": "van already paid for, 16 stops a morning",
+   "family": "van paid for",
+   "stops_per_morning_limit": 16,
+   "policies": {
+    "no rebalancing": {
+     "pounds_saved_per_morning": 0.0,
+     "stops_per_morning": 0.0,
+     "share_of_avoidable_cost_removed": 0.0,
+     "cost_per_window": 5.796293817557329
+    },
+    "last week as certain": {
+     "pounds_saved_per_morning": 62.51754032258068,
+     "stops_per_morning": 12.745967741935484,
+     "share_of_avoidable_cost_removed": 0.46784611276152455,
+     "cost_per_window": 5.013166734013536
+    },
+    "model mean as certain": {
+     "pounds_saved_per_morning": 71.68729838709676,
+     "stops_per_morning": 10.096774193548388,
+     "share_of_avoidable_cost_removed": 0.5364674251693957,
+     "cost_per_window": 4.89830159612082
+    },
+    "quantile (full forecast)": {
+     "pounds_saved_per_morning": 80.51038306451606,
+     "stops_per_morning": 13.705645161290322,
+     "share_of_avoidable_cost_removed": 0.6024944289126228,
+     "cost_per_window": 4.787779068592788
+    },
+    "oracle": {
+     "pounds_saved_per_morning": 133.62842741935484,
+     "stops_per_morning": 12.584677419354838,
+     "share_of_avoidable_cost_removed": 1.0,
+     "cost_per_window": 4.1223949388827155
+    }
+   },
+   "whole_forecast_minus": {
+    "model mean as certain": {
+     "pounds_per_morning": -8.823084677419352,
+     "lo": -10.940805193811059,
+     "hi": -6.644375913273499
+    },
+    "last week as certain": {
+     "pounds_per_morning": -17.992842741935483,
+     "lo": -21.813672795052504,
+     "hi": -14.342359786732445
+    }
+   }
+  },
+  {
+   "scenario": "van already paid for, 32 stops a morning",
+   "family": "van paid for",
+   "stops_per_morning_limit": 32,
+   "policies": {
+    "no rebalancing": {
+     "pounds_saved_per_morning": 0.0,
+     "stops_per_morning": 0.0,
+     "share_of_avoidable_cost_removed": 0.0,
+     "cost_per_window": 5.796293817557329
+    },
+    "last week as certain": {
+     "pounds_saved_per_morning": 71.34979838709678,
+     "stops_per_morning": 19.81048387096774,
+     "share_of_avoidable_cost_removed": 0.4420590323904316,
+     "cost_per_window": 4.902529295888473
+    },
+    "model mean as certain": {
+     "pounds_saved_per_morning": 78.12318548387096,
+     "stops_per_morning": 14.173387096774194,
+     "share_of_avoidable_cost_removed": 0.4840246302434356,
+     "cost_per_window": 4.817682341650672
+    },
+    "quantile (full forecast)": {
+     "pounds_saved_per_morning": 93.74122983870967,
+     "stops_per_morning": 22.475806451612904,
+     "share_of_avoidable_cost_removed": 0.5807887099101191,
+     "cost_per_window": 4.622042630568744
+    },
+    "oracle": {
+     "pounds_saved_per_morning": 161.40332661290324,
+     "stops_per_morning": 19.447580645161292,
+     "share_of_avoidable_cost_removed": 1.0,
+     "cost_per_window": 3.77447216890595
+    }
+   },
+   "whole_forecast_minus": {
+    "model mean as certain": {
+     "pounds_per_morning": -15.618044354838705,
+     "lo": -18.97218074909385,
+     "hi": -12.110997432568494
+    },
+    "last week as certain": {
+     "pounds_per_morning": -22.3914314516129,
+     "lo": -26.73134596054228,
+     "hi": -18.238672791678034
+    }
+   }
+  }
+ ]
+}

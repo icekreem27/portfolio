@@ -1,0 +1,259 @@
+---
+import leaderboard from '../../data/cycle/leaderboard.json';
+import coverage from '../../data/cycle/coverage_by_hour.json';
+import ablation from '../../data/cycle/ablation.json';
+import slices from '../../data/cycle/holdout_slices.json';
+import demand from '../../data/cycle/demand_profile.json';
+import robustness from '../../data/cycle/robustness.json';
+import vanBudget from '../../data/cycle/van_budget.json';
+import decisionMeta from '../../data/cycle/decision_meta.json';
+import decisionSlim from '../../data/cycle/decision_slim.json';
+
+const { id, title, caption } = Astro.props as { id: string; title: string; caption: string };
+
+const periods = [
+  { v: 'holdout', label: 'Spring 2026' },
+  { v: 'nine_folds', label: 'Nine windows' },
+];
+const pct = (x: number) => `${(x * 100).toFixed(1)}%`;
+const f3 = (x: number) => x.toFixed(3);
+const signed = (x: number) => `${x < 0 ? '−' : '+'}${Math.abs(x).toFixed(3)}`;
+
+// leaderboard and robustness share one drawing: a set of panels, each with the same shape of data
+const robSets = [
+  { v: 'original_80', label: 'Original 80 docks' },
+  { v: 'repicked_80', label: 'Re-picked 80 docks' },
+];
+const lbSets = id === 'robustness' ? robSets : periods;
+const lbData = (v: string) => (id === 'robustness' ? (robustness as any)[v] : (leaderboard as any)[v]);
+const rep = (robustness as any).decision_repicked_base_case.policies;
+const repCost = (k: string) => rep[k].cost_per_window.toFixed(2);
+const common = robustness.docks_in_common;
+// leaderboard
+const lbMax = 0.9;
+const gapLo = -0.14, gapHi = 0.42;
+const gapPos = (x: number) => `${((x - gapLo) / (gapHi - gapLo)) * 100}%`;
+
+// slices
+const slMax = Math.max(...slices.slices.map((s) => s.baseline.mean_pinball)) * 1.18;
+const sliceNames: Record<string, string> = {
+  'normal days': 'Ordinary hours', 'strike hours': 'Strike hours', 'bank-holiday hours': 'Bank-holiday hours',
+  'morning docks': 'Morning docks', 'weekend docks': 'Weekend docks',
+};
+
+// ablation
+const abLo = -0.018, abHi = 0.012;
+const abPos = (x: number) => `${((x - abLo) / (abHi - abLo)) * 100}%`;
+
+const abRows = ablation.one_change_at_a_time.map((r) => ({ ...r, spans: !(r.hi < 0 || r.lo > 0) }));
+const share0 = demand.share_of_hours_by_count;
+const shareMax = Math.max(...share0.share);
+
+const policyNames: Record<string, string> = {
+  'no rebalancing': 'Do nothing',
+  'last week as certain': 'Plan from last week’s counts',
+  'model mean as certain': 'Plan from the model’s average',
+  'quantile (full forecast)': 'Plan against the whole forecast',
+  oracle: 'Oracle that sees the future',
+};
+---
+<figure class={`fig fig-${id}`} data-period={id === 'robustness' ? 'original_80' : 'holdout'} data-family="stop10" data-fig={id}>
+  <figcaption class="fig-head">
+    <b>{title}</b>
+    <span>{caption}</span>
+  </figcaption>
+
+  {id === 'robustness' && (
+    <div class="seg" role="group" aria-label="Which docks" data-key="period">
+      {robSets.map((p, i) => <button type="button" data-v={p.v} aria-pressed={i === 0 ? 'true' : 'false'}>{p.label}</button>)}
+    </div>
+  )}
+
+  {id === 'budget' && (
+    <div class="seg" role="group" aria-label="Cost of a stop" data-key="family">
+      <button type="button" data-v="stop10" aria-pressed="true">A stop costs 10</button>
+      <button type="button" data-v="paid" aria-pressed="false">Van already paid for</button>
+    </div>
+  )}
+
+  {['leaderboard', 'coverage', 'explorer'].includes(id) && (
+    <div class="seg" role="group" aria-label="Test period" data-key="period">
+      {periods.map((p, i) => <button type="button" data-v={p.v} aria-pressed={i === 0 ? 'true' : 'false'}>{p.label}</button>)}
+    </div>
+  )}
+
+  {id === 'demand' && (
+    <div class="demand">
+      <div class="chart" data-chart="demand"></div>
+      <div class="zero-bars" aria-label="Share of dock-hours by number of departures">
+        <span class="mini-t">How many dock-hours had 0, 1, 2 … departures (share of all dock-hours)</span>
+        <div class="zb">
+          {share0.counts.map((c, i) => (
+            <div class="zb-col" title={`${c} departures: ${pct(share0.share[i])}`}>
+              <b>{i < 3 ? pct(share0.share[i]) : ''}</b>
+              <i style={`height:${(share0.share[i] / shareMax) * 100}%`}></i>
+              <span>{c}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+      <script type="application/json" id="data-demand" set:html={JSON.stringify({ hours: demand.hours, series: demand.average_departures })}></script>
+    </div>
+  )}
+
+  {(id === 'leaderboard' || id === 'robustness') && (
+    <div class="lb">
+      {lbSets.map((p) => {
+        const d = lbData(p.v);
+        const base = d.rungs.find((r: any) => r.id === 'baseline').mean_pinball;
+        return (
+          <div data-p={p.v}>
+            <div class="bars">
+              {d.rungs.map((r: any) => (
+                <div class={`bar-row ${r.id === 'count' ? 'on' : ''}`}>
+                  <span class="bar-n">{r.name}</span>
+                  <span class="bar-t"><i style={`width:${(r.mean_pinball / lbMax) * 100}%`}></i><u style={`left:${(base / lbMax) * 100}%`}></u></span>
+                  <span class="bar-v">{f3(r.mean_pinball)}</span>
+                </div>
+              ))}
+            </div>
+            <div class="gaps">
+              <span class="mini-t">Gap to the fair baseline, mean pinball (negative is better)</span>
+              {d.mean_pinball_minus_baseline.map((r: any) => (
+                <div class={`gap-row ${r.gap < 0 ? 'good' : ''}`}>
+                  <span class="bar-n">{r.name}</span>
+                  <span class="gap-t">
+                    <u style={`left:${gapPos(0)}`}></u>
+                    <s style={`left:${gapPos(r.lo)};width:calc(${gapPos(r.hi)} - ${gapPos(r.lo)})`}></s>
+                    <i style={`left:${gapPos(r.gap)}`}></i>
+                  </span>
+                  <span class="bar-v">{signed(r.gap)}</span>
+                </div>
+              ))}
+            </div>
+            <p class="fig-note">{d.station_hours_scored.toLocaleString('en-GB')} dock-hours scored · {id === 'robustness' ? (robustness as any).scored_folds : d.period}</p>
+          </div>
+        );
+      })}
+    </div>
+  )}
+
+  {id === 'robustness' && (
+    <div>
+      <p class="fig-note">{common.total} of the {common.of} docks are the same ({common.morning} of 40 morning, {common.weekend} of 40 weekend). The docks were re-picked from {(robustness as any).pick_window} only. Scored on the six windows from Christmas 2024 to Christmas 2025.</p>
+      <p class="fig-note">Same decision result on the re-picked docks: doing nothing {repCost('no rebalancing')}, last week {repCost('last week as certain')}, model average {repCost('model mean as certain')}, whole forecast {repCost('quantile (full forecast)')}, oracle {repCost('oracle')}.</p>
+    </div>
+  )}
+
+  {id === 'budget' && (
+    <div class="bud" data-bud>
+      <div class="chart" data-chart="budget" role="img" aria-label="Pounds saved per morning against doing nothing, for each policy, by the number of van stops allowed per morning"></div>
+      <p class="bud-readout" data-bud-readout></p>
+      <script type="application/json" id="data-budget" set:html={JSON.stringify(vanBudget.scenarios.map((s: any) => ({ f: s.family === 'stop 10' ? 'stop10' : 'paid', l: s.stops_per_morning_limit, p: Object.fromEntries(Object.entries(s.policies).map(([k, v]: any) => [k, v.pounds_saved_per_morning])), g: s.whole_forecast_minus })))}></script>
+    </div>
+  )}
+
+  {id === 'forecast' && (
+    <div class="fan" data-fan>
+      <div class="fan-controls">
+        <label>Dock <select data-fan-station aria-label="Dock"><option>Loading…</option></select></label>
+        <div class="seg" role="group" aria-label="Week" data-key="week">
+          <button type="button" data-v="strike-week" aria-pressed="true">Strike week</button>
+          <button type="button" data-v="normal-week" aria-pressed="false">Normal week</button>
+        </div>
+      </div>
+      <div class="chart" data-chart="fan" role="img" aria-label="Hourly forecast range against actual departures for the chosen dock"></div>
+      <div class="legend">
+        <span><i class="lg band"></i>10 to 90% range</span>
+        <span><i class="lg line"></i>Median</span>
+        <span><i class="lg dot"></i>What happened</span>
+        <span><i class="lg strike"></i>Strike hours</span>
+      </div>
+      <p class="fig-note" data-fan-note></p>
+    </div>
+  )}
+
+  {id === 'coverage' && (
+    <div class="cov">
+      <div class="chart" data-chart="coverage"></div>
+      <script type="application/json" id="data-coverage" set:html={JSON.stringify({ nine_folds: coverage.nine_folds, holdout: coverage.holdout })}></script>
+      <p class="fig-note">
+        <span data-p="holdout">Overall {pct(coverage.holdout.overall)}. 8am: {pct(coverage.holdout.hours[8].inside_band)}.</span>
+        <span data-p="nine_folds">Overall {pct(coverage.nine_folds.overall)}. 8am, the weak spot: {pct(coverage.nine_folds.hours[8].inside_band)}.</span>
+      </p>
+    </div>
+  )}
+
+  {id === 'slices' && (
+    <div class="sl">
+      <div class="legend"><span><i class="lg sq base"></i>Last 8 weeks</span><span><i class="lg sq acc"></i>Count model</span></div>
+      {slices.slices.map((s) => (
+        <div class="sl-row">
+          <span class="bar-n">{sliceNames[s.slice] ?? s.slice}</span>
+          <div class="sl-bars">
+            <span class="bar-t"><i class="base" style={`width:${(s.baseline.mean_pinball / slMax) * 100}%`}></i><em style={`left:calc(${(s.baseline.mean_pinball / slMax) * 100}% + 6px)`}>{f3(s.baseline.mean_pinball)}</em></span>
+            <span class="bar-t"><i class="acc" style={`width:${(s.count.mean_pinball / slMax) * 100}%`}></i><em style={`left:calc(${(s.count.mean_pinball / slMax) * 100}% + 6px)`}>{f3(s.count.mean_pinball)}</em></span>
+          </div>
+          <span class="sl-gain">{Math.round(s.count_gain_over_baseline * 100)}% better</span>
+        </div>
+      ))}
+    </div>
+  )}
+
+  {id === 'ablation' && (
+    <div class="ab">
+      {abRows.map((r) => {
+        const spans = r.spans;
+        return (
+          <div class={`gap-row ${spans ? 'none' : 'good'}`}>
+            <span class="bar-n">{r.change}</span>
+            <span class="gap-t">
+              <u style={`left:${abPos(0)}`}></u>
+              <s style={`left:${abPos(r.lo)};width:calc(${abPos(r.hi)} - ${abPos(r.lo)})`}></s>
+              <i style={`left:${abPos(r.mean_pinball_change)}`}></i>
+            </span>
+            <span class="bar-v">{r.mean_pinball_change.toFixed(4).replace('-', '−')}{spans ? ' · no effect' : ''}</span>
+          </div>
+        );
+      })}
+    </div>
+  )}
+
+  {id === 'explorer' && (
+    <div class="ex" data-ex>
+      <div class="ex-controls">
+        <label>Cost of one van stop: <b data-out="stop">10</b>
+          <input type="range" min="0" max="4" step="1" value="1" data-in="stop" aria-label="Cost of one van stop" />
+          <span class="ticks"><i>3</i><i>10</i><i>15</i><i>25</i><i>50</i></span>
+        </label>
+        <label>Value of a lost trip: <b data-out="lost">1.65</b>
+          <input type="range" min="0" max="2" step="1" value="1" data-in="lost" aria-label="Value of a lost trip" />
+          <span class="ticks three"><i>1.10</i><i>1.65</i><i>3.30</i></span>
+        </label>
+      </div>
+      <p class="fig-note" data-ex-note></p>
+      <div class="bars" data-ex-bars></div>
+      <p class="ex-empty" data-ex-empty hidden>At this van-stop cost no policy ever sends a van, so every policy costs the same as doing nothing.</p>
+      <script type="application/json" id="data-explorer" set:html={JSON.stringify({ data: decisionSlim, names: policyNames })}></script>
+    </div>
+  )}
+
+  {id === 'assumptions' && (
+    <div class="tablewrap">
+      <table class="cmp assum">
+        <thead><tr><th>Input</th><th>Value</th><th>Status</th><th>Source</th></tr></thead>
+        <tbody>
+          {decisionMeta.assumptions.map((a) => (
+            <tr class={a.status === 'assumed' ? 'assumed' : ''}>
+              <td>{a.input}</td><td>{String(a.value)}</td><td>{a.status}</td><td>{a.source}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  )}
+</figure>
+
+<script>
+  import '../../scripts/cycle-figures.ts';
+</script>

@@ -1,0 +1,236 @@
+{
+ "meta": {
+  "title": "Five models, same station-hours, same rules",
+  "caption": "Lower is better on every row except the band. Gaps are mean pinball minus the fair baseline (last 8 weeks, no fit); negative means better. Intervals are 95%, from resampling whole mornings.",
+  "units": "trips per station-hour",
+  "baseline": "last 8 weeks, quantiles (no fit)",
+  "source_tables": [
+   "data/processed/leaderboard.parquet",
+   "data/processed/holdout_leaderboard.parquet"
+  ]
+ },
+ "nine_folds": {
+  "period": "24 Jun 2024 to 11 Jan 2026, nine windows of 28 mornings",
+  "station_hours_scored": 475240,
+  "rungs": [
+   {
+    "id": "naive",
+    "name": "Same hour last week",
+    "departures_mae": 1.5956653480346772,
+    "mean_pinball": 0.7978326740173386,
+    "wis_80": 1.5956653480346772,
+    "inside_80_band": 0.40756039053951687,
+    "returns_mae": 1.526456106388351,
+    "mean_pinball_by_volume": {
+     "quiet": 0.5488169830730384,
+     "middle": 0.6671906739639535,
+     "busy": 1.1730518447341
+    }
+   },
+   {
+    "id": "baseline",
+    "name": "Last 8 weeks, quantiles",
+    "departures_mae": 1.3330822321353422,
+    "mean_pinball": 0.44763840024689283,
+    "wis_80": 0.8952768004937857,
+    "inside_80_band": 0.7746317650029458,
+    "returns_mae": 1.2599549701203603,
+    "mean_pinball_by_volume": {
+     "quiet": 0.3060782651163274,
+     "middle": 0.37326877045892687,
+     "busy": 0.6610413247892579
+    }
+   },
+   {
+    "id": "arima",
+    "name": "Weekly ARIMA",
+    "departures_mae": 1.5977859475313112,
+    "mean_pinball": 0.5470639045882597,
+    "wis_80": 1.0941278091765196,
+    "inside_80_band": 0.8619287097045704,
+    "returns_mae": 1.528189853574549,
+    "mean_pinball_by_volume": {
+     "quiet": 0.36839059130362295,
+     "middle": 0.44302614290419734,
+     "busy": 0.8262246501558957
+    }
+   },
+   {
+    "id": "lightgbm",
+    "name": "LightGBM quantile",
+    "departures_mae": 1.223459559895778,
+    "mean_pinball": 0.38897719737524117,
+    "wis_80": 0.7779543947504824,
+    "inside_80_band": 0.8503093173975255,
+    "returns_mae": 1.1689907158553559,
+    "mean_pinball_by_volume": {
+     "quiet": 0.26308937064221344,
+     "middle": 0.32047523602860867,
+     "busy": 0.5810359128305984
+    }
+   },
+   {
+    "id": "count",
+    "name": "Count model",
+    "departures_mae": 1.1708610386331118,
+    "mean_pinball": 0.3752457004180344,
+    "wis_80": 0.7504914008360688,
+    "inside_80_band": 0.9202550290379597,
+    "returns_mae": 1.1250294587997642,
+    "mean_pinball_by_volume": {
+     "quiet": 0.25599530326173925,
+     "middle": 0.3121095283071761,
+     "busy": 0.5554863654609703
+    }
+   }
+  ],
+  "mean_pinball_minus_baseline": [
+   {
+    "id": "naive",
+    "name": "Same hour last week",
+    "gap": 0.3501942737704458,
+    "lo": 0.33484115609631,
+    "hi": 0.36380776171678275
+   },
+   {
+    "id": "arima",
+    "name": "Weekly ARIMA",
+    "gap": 0.09942550434136697,
+    "lo": 0.08908901398876233,
+    "hi": 0.11006260590740784
+   },
+   {
+    "id": "lightgbm",
+    "name": "LightGBM quantile",
+    "gap": -0.058661202871651635,
+    "lo": -0.06702537259823824,
+    "hi": -0.049641425104933946
+   },
+   {
+    "id": "count",
+    "name": "Count model",
+    "gap": -0.07239269982885839,
+    "lo": -0.08015464554282596,
+    "hi": -0.06442341992718727
+   }
+  ],
+  "count_minus_lightgbm": {
+   "gap": -0.013731496957206766,
+   "lo": -0.01691501729102638,
+   "hi": -0.01051170244129159
+  },
+  "relative_gain_over_baseline": 0.1617213799998628
+ },
+ "holdout": {
+  "period": "6 Apr to 31 May 2026, 56 mornings, opened once on 29 Oct 2026",
+  "station_hours_scored": 107413,
+  "rungs": [
+   {
+    "id": "naive",
+    "name": "Same hour last week",
+    "departures_mae": 1.69108953292432,
+    "mean_pinball": 0.84554476646216,
+    "wis_80": 1.69108953292432,
+    "inside_80_band": 0.38543751687412137,
+    "returns_mae": 1.6189101877798777,
+    "mean_pinball_by_volume": {
+     "quiet": 0.5790619488536155,
+     "middle": 0.71761961996337,
+     "busy": 1.2363671540311214
+    }
+   },
+   {
+    "id": "baseline",
+    "name": "Last 8 weeks, quantiles",
+    "departures_mae": 1.447869438522339,
+    "mean_pinball": 0.486078097312864,
+    "wis_80": 0.9721561946257281,
+    "inside_80_band": 0.7677096813234897,
+    "returns_mae": 1.349520076713247,
+    "mean_pinball_by_volume": {
+     "quiet": 0.3304576352145796,
+     "middle": 0.41025602869352873,
+     "busy": 0.7153885556876077
+    }
+   },
+   {
+    "id": "arima",
+    "name": "Weekly ARIMA",
+    "departures_mae": 1.6949812216843076,
+    "mean_pinball": 0.5800743152652464,
+    "wis_80": 1.1601486305304929,
+    "inside_80_band": 0.838715984098759,
+    "returns_mae": 1.6223693524366112,
+    "mean_pinball_by_volume": {
+     "quiet": 0.3886377687353585,
+     "middle": 0.47737189168957667,
+     "busy": 0.8712681155998082
+    }
+   },
+   {
+    "id": "lightgbm",
+    "name": "LightGBM quantile",
+    "departures_mae": 1.3213569873774027,
+    "mean_pinball": 0.41769554801017894,
+    "wis_80": 0.8353910960203579,
+    "inside_80_band": 0.8652583951663206,
+    "returns_mae": 1.2682605701115433,
+    "mean_pinball_by_volume": {
+     "quiet": 0.285034581185608,
+     "middle": 0.3506464264101669,
+     "busy": 0.6155056049273689
+    }
+   },
+   {
+    "id": "count",
+    "name": "Count model",
+    "departures_mae": 1.2456034185806186,
+    "mean_pinball": 0.39868637874372753,
+    "wis_80": 0.7973727574874551,
+    "inside_80_band": 0.9119659631515739,
+    "returns_mae": 1.19150382169756,
+    "mean_pinball_by_volume": {
+     "quiet": 0.27630621693121693,
+     "middle": 0.33893086080586077,
+     "busy": 0.5791409856001768
+    }
+   }
+  ],
+  "mean_pinball_minus_baseline": [
+   {
+    "id": "naive",
+    "name": "Same hour last week",
+    "gap": 0.35946666914929604,
+    "lo": 0.33035208550234374,
+    "hi": 0.3878778668692225
+   },
+   {
+    "id": "arima",
+    "name": "Weekly ARIMA",
+    "gap": 0.0939962179523824,
+    "lo": 0.06913729604223023,
+    "hi": 0.11901934168253862
+   },
+   {
+    "id": "lightgbm",
+    "name": "LightGBM quantile",
+    "gap": -0.06838254930268511,
+    "lo": -0.08721679456606803,
+    "hi": -0.05170726415705718
+   },
+   {
+    "id": "count",
+    "name": "Count model",
+    "gap": -0.08739171856913658,
+    "lo": -0.10369937641918245,
+    "hi": -0.07269079453750703
+   }
+  ],
+  "count_minus_lightgbm": {
+   "gap": -0.01900916926645147,
+   "lo": -0.02471244516736437,
+   "hi": -0.013772438430841567
+  },
+  "relative_gain_over_baseline": 0.17978945986715966
+ }
+}

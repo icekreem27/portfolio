@@ -1,0 +1,118 @@
+{
+ "meta": {
+  "title": "Where the count model's lead came from",
+  "caption": "The count model differed from the first LightGBM in four ways at once. These runs change one thing at a time. Negative is better. An interval that spans zero means no detectable effect.",
+  "source_table": "data/processed/ablation.parquet"
+ },
+ "variants": [
+  {
+   "variant": "Count model, as built",
+   "key": "count + NB, 4-week history, 200 trees",
+   "mean_pinball": 0.3752457004180344,
+   "mae": 1.1708610386331118,
+   "wis_80": 0.7504914008360688,
+   "inside_80_band": 0.9202550290379597,
+   "gap_to_first_model": -0.013731496957206766,
+   "lo": -0.01691501729102638,
+   "hi": -0.01051170244129159
+  },
+  {
+   "variant": "Count model without the school-term flag",
+   "key": "count + NB, no school term",
+   "mean_pinball": 0.3755724125354207,
+   "mae": 1.1703602390371182,
+   "wis_80": 0.7511448250708415,
+   "inside_80_band": 0.9191082400471341,
+   "gap_to_first_model": -0.013404784839820464,
+   "lo": -0.01651683284018231,
+   "hi": -0.01026548049984706
+  },
+  {
+   "variant": "Count model without forecast weather",
+   "key": "count + NB, no weather",
+   "mean_pinball": 0.3795800016833599,
+   "mae": 1.1837534719299723,
+   "wis_80": 0.7591600033667201,
+   "inside_80_band": 0.9186284824509722,
+   "gap_to_first_model": -0.009397195691881178,
+   "lo": -0.013117861887834403,
+   "hi": -0.0055221688134652665
+  },
+  {
+   "variant": "LightGBM quantile, given the count model's inputs",
+   "key": "quantile, 4-week history, 200 trees",
+   "mean_pinball": 0.3823324115920993,
+   "mae": 1.2010566939877687,
+   "wis_80": 0.7646648231841986,
+   "inside_80_band": 0.8599591785203266,
+   "gap_to_first_model": -0.0066447857831419205,
+   "lo": -0.00935001126127581,
+   "hi": -0.003970503492141793
+  },
+  {
+   "variant": "Count model, given the first model's inputs",
+   "key": "count + NB, 1-week history, 100 trees",
+   "mean_pinball": 0.38637032516903735,
+   "mae": 1.1971803720225571,
+   "wis_80": 0.7727406503380747,
+   "inside_80_band": 0.9271946805824426,
+   "gap_to_first_model": -0.0026068722062037655,
+   "lo": -0.004225113418061839,
+   "hi": -0.0010351604530820077
+  },
+  {
+   "variant": "LightGBM quantile as first built",
+   "key": "quantile, 1-week history, 100 trees",
+   "mean_pinball": 0.38897719737524117,
+   "mae": 1.223459559895778,
+   "wis_80": 0.7779543947504824,
+   "inside_80_band": 0.8503093173975255,
+   "gap_to_first_model": 0.0,
+   "lo": 0.0,
+   "hi": 0.0
+  },
+  {
+   "variant": "Last 8 weeks, no model",
+   "key": "last 8 weeks (no model)",
+   "mean_pinball": 0.44763840024689283,
+   "mae": 1.3330822321353422,
+   "wis_80": 0.8952768004937857,
+   "inside_80_band": 0.7746317650029458,
+   "gap_to_first_model": 0.058661202871651635,
+   "lo": 0.04964142510493394,
+   "hi": 0.06702537259823822
+  }
+ ],
+ "one_change_at_a_time": [
+  {
+   "change": "Count distribution instead of quantile loss, same inputs",
+   "mean_pinball_change": -0.007086711174064846,
+   "lo": -0.00928979479562751,
+   "hi": -0.004844013512973804
+  },
+  {
+   "change": "Four weeks of history instead of one, quantile loss",
+   "mean_pinball_change": -0.0066447857831419205,
+   "lo": -0.00935001126127581,
+   "hi": -0.003970503492141793
+  },
+  {
+   "change": "Four weeks of history instead of one, count model",
+   "mean_pinball_change": -0.011124624751003,
+   "lo": -0.014120574968336696,
+   "hi": -0.008185284323364005
+  },
+  {
+   "change": "Dropping the school-term flag",
+   "mean_pinball_change": 0.000326712117386303,
+   "lo": -0.0004132667454402834,
+   "hi": 0.0010950089137984195
+  },
+  {
+   "change": "Dropping forecast weather",
+   "mean_pinball_change": 0.004334301265325589,
+   "lo": 0.0013901193319434551,
+   "hi": 0.007623864246342191
+  }
+ ]
+}
