@@ -18,7 +18,7 @@ export type Project = {
   slug: string;
   title: string;
   kind: string;
-  category: 'Research' | 'Product' | 'AI and machine learning' | 'Data and analytics';
+  category: 'Masters project' | 'Product' | 'AI and machine learning' | 'Data and analytics';
   year: string;
   seoTitle?: string;
   summary: string;
@@ -41,14 +41,14 @@ export const projects: Project[] = [
     slug: 'armadillo',
     title: 'ARMADILLO',
     seoTitle: 'ARMADILLO: midline loss for 3D landmark segmentation',
-    kind: 'Masters research',
-    category: 'Research',
+    kind: 'Masters project',
+    category: 'Masters project',
     lenses: ['ml'],
     year: '2025',
     summary:
-      'A novel loss function for segmenting thin anatomical landmarks on 3D liver models, published at MIUA 2025.',
+      'A novel loss function for segmenting thin anatomical landmarks on 3D liver models, published at MIUA 2025. First Class (90%).',
     lead:
-      'Part of a group research project on lining up a 3D model of the liver with live surgical video. I wrote the paper on the first step, finding landmarks on the 3D model. Our loss function cuts the average landmark error by 37% compared with leading state-of-the-art research, from about 26 mm to about 17 mm.',
+      'Part of a group masters project on lining up a 3D model of the liver with live surgical video. I wrote the paper on the first step, finding landmarks on the 3D model. Our loss function cuts the average landmark error by 37% compared with leading state-of-the-art research, from about 26 mm to about 17 mm. It was my masters dissertation and earned a First Class (90%).',
     stack: ['Python', 'Deep learning', 'PointNet++', 'Point clouds', 'Computer vision'],
     metrics: [{ value: '37%', label: 'lower landmark error than leading state-of-the-art research (26.2 mm down to 16.6 mm)' }],
     kpis: [
@@ -298,7 +298,7 @@ export const projects: Project[] = [
       'Hourly forecasts, with a range, for how many bikes leave 80 busy London docks, tested against data I locked away until the end.',
     lead:
       'Santander Cycles docks run empty or full, and a van can only visit so many. This project forecasts how many bikes will leave each of 80 busy docks in every hour of the next day, with a range around the number, then asks what that range is worth to someone sending vans. On spring 2026 data I kept untouched until every choice was fixed, the forecasts have 18% lower error than the fairest simple baseline.',
-    stack: ['Python', 'LightGBM', 'Pandas', 'SciPy', 'Statsmodels', 'Conformal prediction', 'Backtesting', 'Simulation'],
+    stack: ['Python', 'NumPy', 'Pandas', 'SciPy', 'LightGBM', 'Statsmodels', 'Matplotlib', 'Parquet'],
     metrics: [{ value: '18%', label: 'lower forecast error than the fair baseline, on spring 2026 data locked away until the end' }],
     kpis: [
       { value: '18%', label: 'lower error than the fair baseline on the locked-away test' },
@@ -306,9 +306,7 @@ export const projects: Project[] = [
       { value: '18.1M', label: 'trips in the TfL data behind it' },
     ],
     links: [
-      // Placeholder until the repo is public.
-      { label: 'Code (coming soon)', href: '#' },
-      { label: 'See LapByLap', href: '/projects/lapbylap' },
+        { label: 'Code', href: 'https://github.com/icekreem27/cycle-hire-forecasting' },
     ],
     sections: [
       {
@@ -367,7 +365,6 @@ export const projects: Project[] = [
         figures: [
           { id: 'leaderboard', title: 'Five models, same dock-hours', caption: 'Lower is better. The dashed line is the fair baseline, the same hour over the last eight weeks with no fitting. The dots below show the gap to it with 95% intervals, resampling whole mornings. Negative is better.' },
           { id: 'forecast', title: 'One dock, one week', caption: 'The forecast against what happened. The shaded band is the model’s 10 to 90% range, issued each morning at 06:00 UTC for the next 24 hours. The model had not seen any of these days. It opens on Argyle Street, the busy dock with the lowest error relative to its volume that week, so it shows the model at its best. Every other dock is one click away.' },
-          { id: 'coverage', title: 'How often the real count landed inside the range', caption: 'An 80% range on whole numbers has to round outward, so it holds more than 80%. The shape matters more than the level.' },
           { id: 'slices', title: 'Where the errors are, spring 2026', caption: 'Strike hours are 21 to 24 April 2026. The count model’s gain over the baseline is larger on strike and bank-holiday hours than on ordinary ones.' },
         ],
         title: 'How it did',

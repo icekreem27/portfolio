@@ -379,7 +379,7 @@ html.theme-anim *, html.theme-anim *::before, html.theme-anim *::after { transit
 
 @media (max-width: 600px) {
   .bar-row, .gap-row { grid-template-columns: 1fr auto; }
-  .bar-t, .gap-t { grid-column: 1 / -1; grid-row: 2; }
+  .bar-row .bar-t, .gap-row .gap-t { grid-column: 1 / -1; grid-row: 2; }
   .bar-s { grid-row: 3; grid-column: 1 / -1; }
   .sl-row { grid-template-columns: 1fr auto; }
   .sl-bars { grid-column: 1 / -1; grid-row: 2; }
@@ -416,3 +416,16 @@ html.theme-anim *, html.theme-anim *::before, html.theme-anim *::after { transit
 .chart .c-oracle { stroke: var(--ink); stroke-dasharray: 5 4; stroke-width: 1.5; opacity: 0.6; }
 .chart .pk-g { fill: var(--grey); } .chart .pk-g2 { fill: var(--grey2); }
 .lg.c-oracle { border-color: var(--ink); border-top-style: dashed; opacity: 0.6; }
+
+/* small screens: let grid children shrink so wide tables and charts scroll inside their own box */
+@media (max-width: 860px) {
+  .feature, .about, .p-body, .p-meta { grid-template-columns: minmax(0, 1fr); }
+  .prose, .tablewrap { min-width: 0; }
+}
+
+/* wide comparison tables scroll sideways on phones instead of squeezing the first column */
+@media (max-width: 600px) {
+  table.cmp:has(th:nth-child(5)) { min-width: 31rem; }
+  table.cmp:has(th:nth-child(5)) th:first-child, table.cmp:has(th:nth-child(5)) td:first-child { min-width: 9rem; }
+  .tablewrap { -webkit-overflow-scrolling: touch; }
+}
