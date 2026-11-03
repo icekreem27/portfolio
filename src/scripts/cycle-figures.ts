@@ -6,7 +6,7 @@ const NS = 'http://www.w3.org/2000/svg';
 const pct = (x: number) => `${(x * 100).toFixed(1)}%`;
 
 type Pt = [number, number];
-const M = { l: 40, r: 14, t: 22, b: 30 };
+const M = { l: 40, r: 14, t: 34, b: 30 };
 
 function frame(host: HTMLElement, h = 260) {
   const w = Math.max(host.clientWidth, 280);
@@ -22,7 +22,7 @@ function axes(w: number, h: number, ys: (v: number) => number, ticks: number[], 
     .join('');
 }
 const hourAxis = (w: number, h: number, xs: (v: number) => number) =>
-  [0, 4, 8, 12, 16, 20, 23].map((v) => `<text x="${xs(v)}" y="${h - 8}" text-anchor="middle">${String(v).padStart(2, '0')}:00</text>`).join('');
+  (w < 460 ? [0, 6, 12, 18] : [0, 4, 8, 12, 16, 20, 23]).map((v) => `<text x="${xs(v)}" y="${h - 8}" text-anchor="middle">${String(v).padStart(2, '0')}:00</text>`).join('');
 
 /* ---------- toggles ---------- */
 document.addEventListener('click', (e) => {
@@ -65,7 +65,7 @@ function demandChart() {
       ${axes(w, h, ys, ticks, (v) => String(v))}${hourAxis(w, h, xs)}${paths}
       <circle class="pk" cx="${xs(8)}" cy="${ys(peak)}" r="4"/>
       <text class="note" x="${xs(8) + 10}" y="${ys(peak) + 4}">8am peak, about ${peak.toFixed(0)} an hour</text>
-      <text class="axis-title" x="${M.l}" y="${M.t - 3}">Departures per dock per hour</text></svg>
+      <text class="axis-title" x="${M.l}" y="${M.t - 22}">Departures per dock per hour</text></svg>
       <div class="legend">${S.map((s) => `<span><i class="lg ${s.cls}"></i>${s.label}</span>`).join('')}</div>`;
   };
   onSize(host, draw);
@@ -235,7 +235,7 @@ function budgetChart() {
     const hits = rows.map((r, i) => `<rect class="hit" data-i="${i}" x="${xs(i) - bw / 2}" y="${M.t}" width="${bw}" height="${h - M.t - M.b + 22}"/>`).join('');
     host.innerHTML = `<svg viewBox="0 0 ${w} ${h}" width="${w}" height="${h}" aria-hidden="true">
       ${axes(w, h, ys, ticks, (v) => String(v))}<line class="sel" x1="${xs(si)}" x2="${xs(si)}" y1="${M.t}" y2="${h - M.b}"/>${lines}${labels}
-      <text class="axis-title" x="${M.l}" y="${M.t - 8}">Pounds saved per morning against doing nothing</text>
+      <text class="axis-title" x="${M.l}" y="${M.t - 22}">Pounds saved per morning against doing nothing</text>
       <text class="axis-title" x="${w - M.r}" y="${h - M.b + 24}" text-anchor="end" style="display:none">Stops allowed per morning</text>${hits}</svg>
       <div class="legend">${S.map((s) => `<span><i class="lg ${s.cls}"></i>${s.label}</span>`).join('')}</div>
       <div class="legend"><span>Stops allowed per morning, left to right. Click a column for the numbers.</span></div>`;

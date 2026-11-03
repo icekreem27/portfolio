@@ -17,5 +17,3 @@ npm run build    # static output in dist/
 - `src/pages/`: home, project template, 404, sitemap, redirects for the old `/project-pages/*.html` URLs
 - `src/styles/global.css`: all styles, with light and dark themes
 - `public/`: icons, share image (`og.png`), font, `CNAME`, `robots.txt`
-
-The CV lives at `public/Karim_Abbas_CV.pdf`. Replace the file (same name) to update it.
